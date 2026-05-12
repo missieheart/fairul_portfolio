@@ -4,27 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fairul Shafiq | Professional Editor</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-dark: #0a0a0a;
-            --bg-card: #121212;
-            --accent: #d4af37; /* Cinema Gold */
-            --text-main: #ffffff;
-            --text-dim: #888888;
-            --border: rgba(255, 255, 255, 0.08);
+            --bg: #050505;
+            --card-bg: #0f0f0f;
+            --accent: #d4af37;
+            --text: #ffffff;
+            --text-dim: #999;
+            --transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1);
         }
 
-        * { box-sizing: border-box; transition: all 0.3s ease; scroll-behavior: smooth; }
+        * { box-sizing: border-box; scroll-behavior: smooth; }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
+            background-color: var(--bg);
+            color: var(--text);
             font-family: 'Inter', sans-serif;
             margin: 0;
-            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- SCROLL REVEAL ANIMATION --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: var(--transition);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* --- NAVIGATION --- */
@@ -33,309 +44,284 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 5%;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid var(--border);
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        .logo {
-            font-weight: 700;
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-            color: var(--text-main);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
+        .logo { font-weight: 800; letter-spacing: 2px; text-decoration: none; color: white; font-size: 1.1rem; }
         .logo span { color: var(--accent); }
 
         .nav-links a {
             color: var(--text-dim);
             text-decoration: none;
             margin-left: 25px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 600;
             letter-spacing: 1px;
         }
 
-        .nav-links a:hover { color: var(--accent); }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
-
-        /* --- HERO --- */
-        .hero {
-            padding: 180px 0 100px 0;
-            text-align: left;
-        }
-
-        .hero-tag { color: var(--accent); font-size: 0.8rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 15px; display: block; }
-        
-        h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); line-height: 1.2; margin: 0 0 25px 0; font-weight: 700; max-width: 800px; }
-        
-        .hero p { color: var(--text-dim); font-size: 1.1rem; max-width: 600px; margin-bottom: 40px; }
-
-        /* --- PRICING SECTION --- */
-        .section-header { margin: 100px 0 50px 0; text-align: center; }
-        .section-header h2 { font-size: 2rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
-        .section-header p { color: var(--text-dim); font-size: 0.9rem; }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .price-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            padding: 30px 20px;
+        /* --- HERO & VIDEO PREVIEW --- */
+        header {
+            padding: 160px 5% 60px 5%;
             text-align: center;
-            border-radius: 8px;
-            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
-        .price-card:hover { border-color: var(--accent); background: #181818; transform: translateY(-5px); }
+        .hero-tag { color: var(--accent); font-size: 0.8rem; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 20px; display: block; }
+        h1 { font-size: clamp(2.5rem, 7vw, 4.5rem); font-weight: 800; margin: 0 0 30px 0; line-height: 1.1; }
 
-        .price-card h4 { margin: 0; color: var(--text-dim); font-size: 0.9rem; text-transform: uppercase; }
-        
-        .price-amount { font-size: 2rem; font-weight: 700; margin: 15px 0; color: var(--text-main); }
-        .price-amount span { font-size: 1rem; color: var(--accent); margin-right: 2px; }
-
-        .best-deal { border: 1px solid var(--accent); background: rgba(212, 175, 55, 0.05); }
-        .badge {
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--accent);
-            color: black;
-            font-size: 0.7rem;
-            font-weight: 800;
-            padding: 4px 12px;
-            border-radius: 20px;
-            text-transform: uppercase;
+        .video-container {
+            width: 100%;
+            max-width: 900px;
+            aspect-ratio: 16 / 9;
+            margin: 40px auto;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--accent);
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.1);
         }
 
-        .disclaimer { text-align: center; color: var(--text-dim); font-size: 0.8rem; font-style: italic; margin-top: 20px; }
+        /* --- COLLABORATORS (NOW FIRST) --- */
+        .section { padding: 100px 5%; max-width: 1200px; margin: 0 auto; }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-size: 2rem; text-transform: uppercase; letter-spacing: 3px; }
+        .section-title p { color: var(--text-dim); }
 
-        /* --- PORTFOLIO --- */
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
         }
 
         .creator-card {
-            background: var(--bg-card);
-            border-radius: 4px;
+            background: var(--card-bg);
+            border-radius: 8px;
             overflow: hidden;
-            border: 1px solid var(--border);
+            border: 1px solid #1a1a1a;
+            position: relative;
         }
 
-        .img-box { height: 350px; width: 100%; overflow: hidden; position: relative; }
-        .img-box img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
-        .creator-card:hover img { opacity: 1; transform: scale(1.05); }
+        .creator-card:hover { border-color: var(--accent); transform: scale(1.02); transition: 0.3s; }
 
-        .card-content { padding: 20px; }
-        .card-content h3 { margin: 0 0 15px 0; font-size: 1.1rem; letter-spacing: 1px; }
+        .img-box { height: 380px; width: 100%; position: relative; overflow: hidden; }
+        .img-box img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; filter: grayscale(100%); transition: 0.5s; }
+        .creator-card:hover img { opacity: 1; filter: grayscale(0%); }
 
-        .work-link {
-            color: var(--text-main);
+        .card-overlay {
+            position: absolute;
+            bottom: 0;
+            padding: 25px;
+            width: 100%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.95));
+        }
+
+        .work-btn {
+            display: inline-block;
+            margin-right: 12px;
+            margin-top: 10px;
+            color: #fff;
             text-decoration: none;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 700;
-            margin-right: 15px;
-            text-transform: uppercase;
             border-bottom: 1px solid var(--accent);
             padding-bottom: 2px;
         }
 
-        .work-link:hover { color: var(--accent); }
+        /* --- PRICING --- */
+        .pricing-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+        }
 
-        /* --- CONTACT SECTION --- */
-        .contact-footer {
-            margin-top: 150px;
-            padding: 80px 0;
-            border-top: 1px solid var(--border);
+        .price-card {
+            background: #0a0a0a;
+            border: 1px solid #1a1a1a;
+            padding: 40px 20px;
             text-align: center;
+            border-radius: 4px;
         }
 
-        .contact-icons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 40px;
-            flex-wrap: wrap;
-        }
+        .price-card h4 { color: var(--text-dim); margin-top: 0; font-size: 0.8rem; text-transform: uppercase; }
+        .price-val { font-size: 2.2rem; font-weight: 700; margin: 15px 0; }
+        .price-val span { color: var(--accent); font-size: 1rem; }
 
-        .contact-btn {
+        .best-deal { border: 1px solid var(--accent); position: relative; background: linear-gradient(145deg, #111, #050505); }
+        .deal-tag { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #000; font-weight: 800; padding: 4px 15px; font-size: 0.6rem; border-radius: 20px; }
+
+        /* --- CONTACT --- */
+        .contact-wrap { text-align: center; padding: 100px 5%; border-top: 1px solid #111; }
+        .social-row { display: flex; justify-content: center; gap: 20px; margin-top: 40px; flex-wrap: wrap; }
+        
+        .social-box {
             display: flex;
             align-items: center;
-            gap: 12px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            padding: 15px 25px;
+            gap: 10px;
+            background: #111;
+            padding: 15px 30px;
             border-radius: 50px;
-            color: var(--text-main);
             text-decoration: none;
+            color: white;
             font-weight: 600;
-            font-size: 0.9rem;
+            border: 1px solid #222;
+            transition: 0.3s;
         }
 
-        .contact-btn i { font-size: 1.2rem; }
-
-        /* Icon Colors */
-        .whatsapp:hover { background: #25D366; color: white; border-color: #25D366; }
+        .social-box i { font-size: 1.4rem; }
+        .whatsapp:hover { background: #25d366; color: white; border-color: #25d366; }
         .email:hover { background: var(--accent); color: black; border-color: var(--accent); }
-        .instagram:hover { background: #E1306C; color: white; border-color: #E1306C; }
+        .instagram:hover { background: #e1306c; border-color: #e1306c; }
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .pricing-grid { grid-template-columns: 1fr 1fr; }
-            .hero { padding-top: 140px; }
+            .pricing-container { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="#" class="logo">FAIRUL <span>SHAFIQ</span></a>
+        <a href="#" class="logo">FAIRUL<span>SHAFIQ</span></a>
         <div class="nav-links">
-            <a href="#pricing">PRICING</a>
             <a href="#work">PROJECTS</a>
+            <a href="#pricing">PRICING</a>
             <a href="#contact">CONTACT</a>
         </div>
     </nav>
 
-    <div class="container">
+    <header class="reveal">
+        <span class="hero-tag">Professional Freelance Editor</span>
+        <h1>I help creators go viral with cinematic editing.</h1>
+        <p style="color: var(--text-dim);">5 Years of expertise in high-retention social media content.</p>
         
-        <!-- Hero Section -->
-        <header class="hero">
-            <span class="hero-tag">Video Production Specialist</span>
-            <h1>Cinematic Editing for High-Growth Creators.</h1>
-            <p>Transforming raw footage into high-retention content with 5 years of professional experience.</p>
-            <a href="https://www.behance.net/gallery/206585543/Activity-Timeline-Editting" target="_blank" class="work-link" style="font-size: 1rem;">View Full Behance Portfolio →</a>
-        </header>
+        <!-- FEATURED VIDEO PREVIEW -->
+        <div class="video-container">
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/7oeKaDSfB1A?autoplay=1&mute=1&loop=1&playlist=7oeKaDSfB1A" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+    </header>
 
-        <!-- Pricing Section -->
-        <section id="pricing">
-            <div class="section-header">
-                <h2>Service Packages</h2>
-                <p>Professional editing rates for social media creators</p>
-            </div>
+    <!-- COLLABORATORS SECTION (FIRST) -->
+    <section id="work" class="section reveal">
+        <div class="section-title">
+            <h2>Collaborations</h2>
+            <p>Clients & Influencers I've worked with</p>
+        </div>
 
-            <div class="pricing-grid">
-                <div class="price-card">
-                    <h4>1 Video</h4>
-                    <div class="price-amount"><span>RM</span>60</div>
-                </div>
-                <div class="price-card">
-                    <h4>5 Videos</h4>
-                    <div class="price-amount"><span>RM</span>250</div>
-                </div>
-                <div class="price-card">
-                    <h4>10 Videos</h4>
-                    <div class="price-amount"><span>RM</span>450</div>
-                </div>
-                <div class="price-card">
-                    <h4>15 Videos</h4>
-                    <div class="price-amount"><span>RM</span>600</div>
-                </div>
-                <!-- Best Deal Package -->
-                <div class="price-card best-deal">
-                    <div class="badge">Best Deal</div>
-                    <h4>20 Videos</h4>
-                    <div class="price-amount"><span>RM</span>700</div>
+        <div class="portfolio-grid">
+            <div class="creator-card">
+                <div class="img-box"><img src="noreen.png"></div>
+                <div class="card-overlay">
+                    <h3>Noreen Iman</h3>
+                    <a href="https://youtube.com/shorts/7oeKaDSfB1A" class="work-btn" target="_blank">WATCH SHORT</a>
                 </div>
             </div>
-            <p class="disclaimer">* Disclaimer: These rates are valid for full payment only.</p>
-        </section>
 
-        <!-- Projects Section -->
-        <section id="work">
-            <div class="section-header">
-                <h2>Selected Work</h2>
-                <p>Collaborations with leading influencers</p>
-            </div>
-
-            <div class="portfolio-grid">
-                <!-- Creator 1 -->
-                <div class="creator-card">
-                    <div class="img-box"><img src="noreen.png"></div>
-                    <div class="card-content">
-                        <h3>Noreen Iman</h3>
-                        <a href="https://youtube.com/shorts/7oeKaDSfB1A" class="work-link" target="_blank">WATCH SHORT</a>
-                    </div>
-                </div>
-
-                <!-- Creator 2 -->
-                <div class="creator-card">
-                    <div class="img-box"><img src="isa.jpeg"></div>
-                    <div class="card-content">
-                        <h3>Isa ISARB</h3>
-                        <a href="https://youtube.com/shorts/6FFYQN3xC0k" class="work-link" target="_blank">VIDEO 1</a>
-                        <a href="https://youtube.com/shorts/JzoY379-hfs" class="work-link" target="_blank">VIDEO 2</a>
-                    </div>
-                </div>
-
-                <!-- Creator 3 -->
-                <div class="creator-card">
-                    <div class="img-box"><img src="liana.jpeg"></div>
-                    <div class="card-content">
-                        <h3>Liana</h3>
-                        <a href="https://youtube.com/shorts/7it8e3b80kk" class="work-link" target="_blank">V1</a>
-                        <a href="https://youtube.com/shorts/ybEMMZQwzQE" class="work-link" target="_blank">V2</a>
-                        <a href="https://youtube.com/shorts/SxUgiwLsrAs" class="work-link" target="_blank">V3</a>
-                    </div>
-                </div>
-
-                <!-- Creator 4 -->
-                <div class="creator-card">
-                    <div class="img-box"><img src="sk_penjahat.jpeg"></div>
-                    <div class="card-content">
-                        <h3>SK_penjahat</h3>
-                        <a href="https://youtube.com/shorts/WclkfoAsEDk" class="work-link" target="_blank">WATCH SHORT</a>
-                    </div>
+            <div class="creator-card">
+                <div class="img-box"><img src="isa.jpeg"></div>
+                <div class="card-overlay">
+                    <h3>Isa ISARB</h3>
+                    <a href="https://youtube.com/shorts/6FFYQN3xC0k" class="work-btn" target="_blank">VIDEO 1</a>
+                    <a href="https://youtube.com/shorts/JzoY379-hfs" class="work-btn" target="_blank">VIDEO 2</a>
                 </div>
             </div>
-        </section>
 
-        <!-- Contact Section -->
-        <footer id="contact" class="contact-footer">
-            <div class="section-header" style="margin-top: 0;">
-                <h2>Start Your Project</h2>
-                <p>Available for new freelance opportunities</p>
+            <div class="creator-card">
+                <div class="img-box"><img src="liana.jpeg"></div>
+                <div class="card-overlay">
+                    <h3>Liana</h3>
+                    <a href="https://youtube.com/shorts/7it8e3b80kk" class="work-btn" target="_blank">REEL 1</a>
+                    <a href="https://youtube.com/shorts/ybEMMZQwzQE" class="work-btn" target="_blank">REEL 2</a>
+                    <a href="https://youtube.com/shorts/SxUgiwLsrAs" class="work-btn" target="_blank">REEL 3</a>
+                </div>
             </div>
 
-            <div class="contact-icons">
-                <!-- WhatsApp Link -->
-                <a href="https://wa.me/60128376159" class="contact-btn whatsapp" target="_blank">
-                    <i class="fab fa-whatsapp"></i> WhatsApp
-                </a>
-                
-                <!-- Email Link -->
-                <a href="mailto:afairul99@gmail.com" class="contact-btn email">
-                    <i class="far fa-envelope"></i> Email Me
-                </a>
-
-                <!-- Instagram Link -->
-                <a href="https://instagram.com/syfq.fee" class="contact-btn instagram" target="_blank">
-                    <i class="fab fa-instagram"></i> Instagram
-                </a>
+            <div class="creator-card">
+                <div class="img-box"><img src="sk_penjahat.jpeg"></div>
+                <div class="card-overlay">
+                    <h3>SK_penjahat</h3>
+                    <a href="https://youtube.com/shorts/WclkfoAsEDk" class="work-btn" target="_blank">WATCH SHORT</a>
+                </div>
             </div>
-            
-            <p style="margin-top: 80px; font-size: 0.7rem; color: #444; letter-spacing: 2px;">© 2024 MUHAMMAD FAIRUL SHAFIQ</p>
-        </footer>
+        </div>
+    </section>
 
-    </div>
+    <!-- PRICING SECTION -->
+    <section id="pricing" class="section reveal">
+        <div class="section-title">
+            <h2>Pricing Packages</h2>
+            <p>Flexible rates for every creator scale</p>
+        </div>
+
+        <div class="pricing-container">
+            <div class="price-card">
+                <h4>1 Video</h4>
+                <div class="price-val"><span>RM</span>60</div>
+            </div>
+            <div class="price-card">
+                <h4>5 Videos</h4>
+                <div class="price-val"><span>RM</span>250</div>
+            </div>
+            <div class="price-card">
+                <h4>10 Videos</h4>
+                <div class="price-val"><span>RM</span>450</div>
+            </div>
+            <div class="price-card">
+                <h4>15 Videos</h4>
+                <div class="price-val"><span>RM</span>600</div>
+            </div>
+            <div class="price-card best-deal">
+                <div class="deal-tag">BEST DEAL</div>
+                <h4>20 Videos</h4>
+                <div class="price-val"><span>RM</span>700</div>
+            </div>
+        </div>
+        <p style="text-align: center; color: #444; font-size: 0.8rem; margin-top: 30px;">* Disclaimer: Rates are for full payment only.</p>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <footer id="contact" class="contact-wrap reveal">
+        <h2 style="font-size: 2.5rem; font-weight: 800;">Let's Create Together</h2>
+        <p style="color: var(--text-dim); margin-bottom: 40px;">Ready to elevate your content? Reach out via your preferred platform.</p>
+
+        <div class="social-row">
+            <a href="https://wa.me/60128376159" class="social-box whatsapp" target="_blank">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+            <a href="mailto:afairul99@gmail.com" class="social-box email">
+                <i class="far fa-envelope"></i> Email
+            </a>
+            <a href="https://instagram.com/syfq.fee" class="social-box instagram" target="_blank">
+                <i class="fab fa-instagram"></i> Instagram
+            </a>
+        </div>
+
+        <div style="margin-top: 100px; opacity: 0.3; font-size: 0.7rem; letter-spacing: 3px;">
+            © 2024 FAIRUL SHAFIQ | EST. 2019
+        </div>
+    </footer>
+
+    <!-- TRANSITION SCRIPT -->
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Run once on load
+    </script>
 
 </body>
 </html>
