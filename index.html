@@ -3,186 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SYFQFEE — Cinematic Video Editor</title>
+    <title>Fairul Shafiq — Professional Video Editor</title>
 
+    <!-- Tailwind & Alpine -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Sophisticated Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #000; color: #fff; }
-        .font-heading { font-family: 'Syne', sans-serif; }
-        .red-glow { box-shadow: 0 0 30px rgba(220, 38, 38, 0.2); }
-        .glass { background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
-        
-        .btn-red {
-            background: #dc2626;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #0a0a0a; 
+            color: #d1d1d1;
+            -webkit-font-smoothing: antialiased;
         }
-        .btn-red:hover { background: #ef4444; transform: translateY(-2px); }
+        h1, h2, h3, .nav-link { font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        /* Subtle Red Accent */
+        .accent-red { color: #dc2626; }
+        .bg-accent-red { background-color: #dc2626; }
+        
+        /* Professional Borders */
+        .border-soft { border-color: rgba(255, 255, 255, 0.08); }
+        
+        /* Chill Hover Effect */
+        .project-card {
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .project-card:hover {
+            opacity: 0.8;
+            transform: translateY(-2px);
+        }
+
         [x-cloak] { display: none !important; }
     </style>
 </head>
 <body x-data="{ modalOpen: false, activeVideo: '', activeTitle: '' }">
 
-    <!-- NAVIGATION -->
-    <nav class="fixed w-full z-50 glass border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="font-heading text-2xl font-extrabold tracking-tighter">
-                SYFQ<span class="text-red-600">FEE</span>
-            </div>
-            <div class="hidden md:flex items-center gap-10 text-[11px] font-bold uppercase tracking-[0.3em] text-zinc-400">
-                <a href="#work" class="hover:text-red-500 transition">Portfolio</a>
-                <a href="#about" class="hover:text-red-500 transition">About</a>
-                <a href="https://wa.me/60128376159" class="btn-red text-white px-6 py-2.5 rounded-sm tracking-widest">Hire Me</a>
+    <!-- MINIMALIST NAV -->
+    <nav class="fixed w-full z-50 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-soft">
+        <div class="max-w-6xl mx-auto px-8 h-16 flex items-center justify-between">
+            <a href="#" class="font-bold tracking-tighter text-white text-lg">
+                SYFQ<span class="accent-red">FEE</span>
+            </a>
+            <div class="hidden md:flex items-center gap-10 text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
+                <a href="#work" class="hover:text-white transition">Work</a>
+                <a href="#about" class="hover:text-white transition">About</a>
+                <a href="mailto:afairul99@gmail.com" class="text-white border-b border-red-600 pb-1">Contact</a>
             </div>
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <header class="relative pt-48 pb-24 overflow-hidden">
-        <div class="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-red-900/10 blur-[150px] rounded-full -z-10"></div>
-        
-        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-                <div class="flex items-center gap-3 mb-6">
-                    <span class="h-[1px] w-12 bg-red-600"></span>
-                    <span class="text-red-500 font-bold text-xs uppercase tracking-[0.4em]">Professional Editor</span>
-                </div>
-                <h1 class="font-heading text-6xl md:text-8xl font-extrabold leading-[0.9] mb-8 tracking-tighter uppercase">
-                    Cuts that <br> <span class="text-red-600">Dominate.</span>
+    <!-- PROFESSIONAL HERO -->
+    <header class="pt-40 pb-24 border-b border-soft">
+        <div class="max-w-6xl mx-auto px-8 flex flex-col md:flex-row items-center gap-16">
+            <div class="flex-1">
+                <p class="text-red-600 font-medium text-xs uppercase tracking-[0.3em] mb-4">Professional Video Editor</p>
+                <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-6 tracking-tight">
+                    Engineering high-engagement <br> visuals for the digital era.
                 </h1>
-                <p class="text-zinc-400 text-lg mb-10 max-w-lg leading-relaxed">
-                    Hi, I'm <b>Muhammad Fairul Shafiq</b>. With 5 years in the industry, I engineer high-retention, cinematic content for top-tier creators.
+                <p class="text-zinc-500 text-base max-w-md leading-relaxed mb-8">
+                    I am Muhammad Fairul Shafiq. With 5 years of experience, I specialize in cinematic editing that drives retention and viral growth.
                 </p>
-                <div class="flex gap-4">
-                    <a href="#work" class="btn-red px-10 py-4 rounded-sm font-bold uppercase text-[10px] tracking-widest">View Work</a>
-                    <a href="https://wa.me/60128376159" class="glass px-10 py-4 rounded-sm font-bold uppercase text-[10px] tracking-widest">WhatsApp</a>
+                <div class="flex gap-6">
+                    <a href="#work" class="bg-accent-red text-white text-[10px] uppercase font-bold tracking-widest px-8 py-3 rounded-sm hover:bg-red-700 transition">View Projects</a>
+                    <a href="https://wa.me/60128376159" class="text-white text-[10px] uppercase font-bold tracking-widest py-3 flex items-center gap-2 border-b border-white/10 hover:border-red-600 transition">Let's Talk <i data-lucide="arrow-right" class="w-3 h-3"></i></a>
                 </div>
             </div>
-            <div class="relative">
-                <img src="fairul.jpeg" class="rounded-2xl w-full aspect-[4/5] object-cover red-glow border border-white/10 grayscale hover:grayscale-0 transition duration-700">
+            <div class="w-full md:w-80">
+                <img src="fairul.jpeg" alt="Fairul" class="rounded-sm grayscale border border-soft shadow-2xl">
             </div>
         </div>
     </header>
 
-    <!-- PROJECTS SECTION -->
-    <section id="work" class="py-32 max-w-7xl mx-auto px-6">
-        <h2 class="font-heading text-4xl font-extrabold mb-16 tracking-tighter uppercase border-l-4 border-red-600 pl-6">Client Showcase</h2>
+    <!-- WORK GRID -->
+    <section id="work" class="py-24 max-w-6xl mx-auto px-8">
+        <div class="flex items-center justify-between mb-16">
+            <h2 class="text-xs uppercase tracking-[0.4em] text-zinc-500 font-bold">Selected Clips</h2>
+            <div class="h-[1px] flex-grow ml-10 bg-zinc-800"></div>
+        </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-20">
             
-            <!-- ISA ISARB -->
-            <div class="group relative" @click="modalOpen = true; activeVideo = 'https://www.youtube.com/embed/5HlR9A_N7Z8'; activeTitle = 'Isa Isarb'">
-                <div class="relative overflow-hidden rounded-xl aspect-video border border-white/10 cursor-pointer">
-                    <img src="isa.jpeg" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 brightness-50 group-hover:brightness-75">
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 transform scale-75 group-hover:scale-100">
-                            <i data-lucide="play" class="fill-white text-white"></i>
-                        </div>
-                    </div>
+            <!-- Project 1 -->
+            <div class="project-card group cursor-pointer" @click="modalOpen = true; activeVideo = 'https://www.youtube.com/embed/5HlR9A_N7Z8'; activeTitle = 'Isa Isarb'">
+                <div class="relative aspect-video overflow-hidden bg-zinc-900 border border-soft mb-6">
+                    <img src="isa.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500">
                 </div>
-                <!-- Profile Pic overlay -->
-                <div class="absolute -bottom-6 left-6 flex items-center gap-4">
-                    <img src="isa.jpeg" class="w-16 h-16 rounded-full border-4 border-black object-cover shadow-xl">
+                <div class="flex justify-between items-start">
                     <div>
-                        <h3 class="font-heading text-xl font-bold uppercase">Isa Isarb</h3>
-                        <p class="text-red-500 text-[10px] font-bold tracking-widest uppercase">YouTube Content</p>
+                        <h3 class="text-white text-lg font-medium tracking-tight">Isa Isarb</h3>
+                        <p class="text-zinc-600 text-xs mt-1">YouTube Strategy / Editing</p>
                     </div>
+                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-zinc-700 group-hover:text-red-600 transition"></i>
                 </div>
             </div>
 
-            <!-- NOREEN IMAN -->
-            <div class="group relative" @click="modalOpen = true; activeVideo = 'https://www.youtube.com/embed/D_v-Mv-N2X0'; activeTitle = 'Noreen Iman'">
-                <div class="relative overflow-hidden rounded-xl aspect-video border border-white/10 cursor-pointer">
-                    <img src="noreen.png" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 brightness-50 group-hover:brightness-75">
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 transform scale-75 group-hover:scale-100">
-                            <i data-lucide="play" class="fill-white text-white"></i>
-                        </div>
-                    </div>
+            <!-- Project 2 -->
+            <div class="project-card group cursor-pointer" @click="modalOpen = true; activeVideo = 'https://www.youtube.com/embed/D_v-Mv-N2X0'; activeTitle = 'Noreen Iman'">
+                <div class="relative aspect-video overflow-hidden bg-zinc-900 border border-soft mb-6">
+                    <img src="noreen.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500">
                 </div>
-                <div class="absolute -bottom-6 left-6 flex items-center gap-4">
-                    <img src="noreen.png" class="w-16 h-16 rounded-full border-4 border-black object-cover shadow-xl">
+                <div class="flex justify-between items-start">
                     <div>
-                        <h3 class="font-heading text-xl font-bold uppercase">Noreen Iman</h3>
-                        <p class="text-red-500 text-[10px] font-bold tracking-widest uppercase">Lifestyle Vlog</p>
+                        <h3 class="text-white text-lg font-medium tracking-tight">Noreen Iman</h3>
+                        <p class="text-zinc-600 text-xs mt-1">Lifestyle Content</p>
                     </div>
+                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-zinc-700 group-hover:text-red-600 transition"></i>
                 </div>
             </div>
 
-            <!-- LIANA (Added Padding for spacing) -->
-            <div class="group relative mt-12" @click="modalOpen = true; activeVideo = 'https://www.youtube.com/embed/xS5E-xR7M4M'; activeTitle = 'Liana'">
-                <div class="relative overflow-hidden rounded-xl aspect-video border border-white/10 cursor-pointer">
-                    <img src="liana.jpeg" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 brightness-50 group-hover:brightness-75">
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 transform scale-75 group-hover:scale-100">
-                            <i data-lucide="play" class="fill-white text-white"></i>
-                        </div>
-                    </div>
+            <!-- Project 3 -->
+            <div class="project-card group cursor-pointer" @click="modalOpen = true; activeVideo = 'https://www.youtube.com/embed/xS5E-xR7M4M'; activeTitle = 'Liana'">
+                <div class="relative aspect-video overflow-hidden bg-zinc-900 border border-soft mb-6">
+                    <img src="liana.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500">
                 </div>
-                <div class="absolute -bottom-6 left-6 flex items-center gap-4">
-                    <img src="liana.jpeg" class="w-16 h-16 rounded-full border-4 border-black object-cover shadow-xl">
+                <div class="flex justify-between items-start">
                     <div>
-                        <h3 class="font-heading text-xl font-bold uppercase">Liana</h3>
-                        <p class="text-red-500 text-[10px] font-bold tracking-widest uppercase">Social Content</p>
+                        <h3 class="text-white text-lg font-medium tracking-tight">Liana</h3>
+                        <p class="text-zinc-600 text-xs mt-1">Social Narrative</p>
                     </div>
+                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-zinc-700 group-hover:text-red-600 transition"></i>
                 </div>
             </div>
 
-            <!-- SK PENJAHAT -->
-            <div class="group relative mt-12" @click="modalOpen = true; activeVideo = 'https://www.youtube.com/embed/R9E-W7vD8hM'; activeTitle = 'SK Penjahat'">
-                <div class="relative overflow-hidden rounded-xl aspect-video border border-white/10 cursor-pointer">
-                    <img src="sk_penjahat.jpeg" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 brightness-50 group-hover:brightness-75">
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 transform scale-75 group-hover:scale-100">
-                            <i data-lucide="play" class="fill-white text-white"></i>
-                        </div>
-                    </div>
+            <!-- Project 4 -->
+            <div class="project-card group cursor-pointer" @click="modalOpen = true; activeVideo = 'https://www.youtube.com/embed/R9E-W7vD8hM'; activeTitle = 'SK Penjahat'">
+                <div class="relative aspect-video overflow-hidden bg-zinc-900 border border-soft mb-6">
+                    <img src="sk_penjahat.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500">
                 </div>
-                <div class="absolute -bottom-6 left-6 flex items-center gap-4">
-                    <img src="sk_penjahat.jpeg" class="w-16 h-16 rounded-full border-4 border-black object-cover shadow-xl">
+                <div class="flex justify-between items-start">
                     <div>
-                        <h3 class="font-heading text-xl font-bold uppercase">SK Penjahat</h3>
-                        <p class="text-red-500 text-[10px] font-bold tracking-widest uppercase">Gaming Cinematic</p>
+                        <h3 class="text-white text-lg font-medium tracking-tight">SK Penjahat</h3>
+                        <p class="text-zinc-600 text-xs mt-1">Gaming / Cinematic Intro</p>
                     </div>
+                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-zinc-700 group-hover:text-red-600 transition"></i>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- VIDEO MODAL -->
-    <div x-show="modalOpen" x-cloak class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/95" x-transition>
-        <div class="relative w-full max-w-5xl aspect-video glass rounded-xl overflow-hidden red-glow" @click.outside="modalOpen = false; activeVideo = ''">
-            <div class="absolute top-0 left-0 w-full p-4 glass border-none flex justify-between items-center z-10">
-                <span class="font-heading uppercase tracking-widest text-xs" x-text="activeTitle"></span>
-                <button @click="modalOpen = false; activeVideo = ''" class="hover:text-red-500 transition">
-                    <i data-lucide="x"></i>
-                </button>
+    <!-- CHILL ABOUT SECTION -->
+    <section id="about" class="py-24 border-t border-soft">
+        <div class="max-w-6xl mx-auto px-8 grid md:grid-cols-3 gap-12">
+            <div class="md:col-span-1">
+                <h2 class="text-xs uppercase tracking-[0.4em] text-zinc-500 font-bold mb-8">Details</h2>
+                <div class="space-y-6 text-sm">
+                    <div>
+                        <p class="text-zinc-600 uppercase text-[9px] tracking-widest mb-1">Location</p>
+                        <p class="text-white">Malaysia / Remote</p>
+                    </div>
+                    <div>
+                        <p class="text-zinc-600 uppercase text-[9px] tracking-widest mb-1">Focus</p>
+                        <p class="text-white">High Retention Content</p>
+                    </div>
+                    <div>
+                        <p class="text-zinc-600 uppercase text-[9px] tracking-widest mb-1">Experience</p>
+                        <p class="text-white">5 Years Pro</p>
+                    </div>
+                </div>
             </div>
-            <iframe class="w-full h-full pt-12" :src="activeVideo" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <div class="md:col-span-2">
+                <h2 class="text-xs uppercase tracking-[0.4em] text-zinc-500 font-bold mb-8">Biography</h2>
+                <p class="text-xl text-zinc-400 leading-relaxed font-light">
+                    My approach to editing is rooted in <span class="text-white">psychological pacing</span>. 
+                    I don't just cut clips; I build narratives that keep audiences watching. 
+                    I’ve worked across diverse formats, ensuring each project delivers a professional, cinematic polish.
+                </p>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <!-- CONTACT SECTION -->
-    <footer class="py-32 border-t border-white/5 bg-zinc-950/50">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="font-heading text-5xl md:text-7xl font-extrabold mb-12 tracking-tighter uppercase">Get In <span class="text-red-600">Touch.</span></h2>
-            <div class="flex flex-col md:flex-row justify-center gap-10 mb-16">
-                <a href="mailto:afairul99@gmail.com" class="text-xl font-semibold hover:text-red-500 transition">afairul99@gmail.com</a>
-                <a href="tel:0128376159" class="text-xl font-semibold hover:text-red-500 transition">012-837 6159</a>
+    <!-- FOOTER / CONTACT -->
+    <footer class="py-24 bg-zinc-950">
+        <div class="max-w-6xl mx-auto px-8 text-center">
+            <h2 class="text-3xl font-bold text-white mb-8 tracking-tight">Ready for the next cut?</h2>
+            <div class="flex justify-center gap-10 mb-16 font-medium">
+                <a href="mailto:afairul99@gmail.com" class="text-zinc-400 hover:text-white transition">afairul99@gmail.com</a>
+                <a href="tel:0128376159" class="text-zinc-400 hover:text-white transition">012-837 6159</a>
             </div>
-            <div class="flex justify-center gap-6">
-                <a href="https://www.instagram.com/syfq.fee" class="w-12 h-12 glass rounded-full flex items-center justify-center hover:bg-red-600 transition"><i data-lucide="instagram"></i></a>
-                <a href="https://www.behance.net/gallery/206585543/Activity-Timeline-Editting" class="w-12 h-12 glass rounded-full flex items-center justify-center hover:bg-red-600 transition"><i data-lucide="external-link"></i></a>
+            <div class="flex justify-center gap-8 opacity-40 hover:opacity-100 transition duration-500">
+                <a href="https://www.instagram.com/syfq.fee" target="_blank"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                <a href="https://www.threads.net/@feedstudi0" target="_blank"><i data-lucide="at-sign" class="w-5 h-5"></i></a>
+                <a href="https://www.behance.net/gallery/206585543/Activity-Timeline-Editting" target="_blank"><i data-lucide="camera" class="w-5 h-5"></i></a>
             </div>
-            <p class="mt-20 text-zinc-700 text-[10px] tracking-[0.5em] uppercase">© 2025 SYFQFEE STUDIO</p>
+            <p class="mt-20 text-[9px] tracking-[0.6em] text-zinc-800 uppercase">SYFQFEE Studio © 2025</p>
         </div>
     </footer>
+
+    <!-- VIDEO MODAL -->
+    <div x-show="modalOpen" x-cloak class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/95 transition-all" x-transition.opacity>
+        <div class="relative w-full max-w-5xl aspect-video bg-black rounded shadow-2xl border border-soft" @click.outside="modalOpen = false; activeVideo = ''">
+            <div class="absolute -top-10 left-0 text-white flex justify-between w-full">
+                <span class="text-[10px] uppercase tracking-widest font-bold" x-text="activeTitle"></span>
+                <button @click="modalOpen = false; activeVideo = ''" class="hover:text-red-500 transition">Close (ESC)</button>
+            </div>
+            <iframe class="w-full h-full" :src="activeVideo" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+    </div>
 
     <script>lucide.createIcons();</script>
 </body>
