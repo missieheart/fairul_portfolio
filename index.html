@@ -1,506 +1,196 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fairul Shafiq | Professional Video Editor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --card-bg: #161616;
+            --accent-color: #ffffff; /* Clean white for high contrast */
+            --text-gray: #a0a0a0;
+        }
 
-  <title>Fairul Shafiq — Video Editor</title>
+        body {
+            background-color: var(--bg-color);
+            color: white;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+        }
 
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
+        /* Hero Section */
+        header {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('your-main-photo.jpg'); /* Placeholder for your main photo */
+            background-size: cover;
+            background-position: center;
+        }
 
-  <!-- Alpine -->
-  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        h1 { font-size: 3.5rem; margin: 0; letter-spacing: -1px; text-transform: uppercase; }
+        .subtitle { font-size: 1.2rem; color: var(--text-gray); letter-spacing: 3px; margin-top: 10px; }
 
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+        /* About Section */
+        .container { max-width: 1100px; margin: 0 auto; padding: 80px 20px; }
+        
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .experience-badge { border-left: 3px solid var(--accent-color); padding-left: 20px; margin-top: 30px; }
 
-  <!-- Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
+        /* Portfolio Section */
+        .section-title { font-size: 2rem; margin-bottom: 40px; border-bottom: 1px solid #333; padding-bottom: 10px; }
+        
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        
+        .creator-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            border: 1px solid #222;
+        }
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+        .creator-card:hover { transform: translateY(-10px); border-color: #444; }
 
-    body {
-      font-family: "Inter", sans-serif;
-      background: #070707;
-      color: #e5e5e5;
-      -webkit-font-smoothing: antialiased;
-    }
+        .creator-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            filter: grayscale(40%);
+            transition: 0.3s;
+        }
+        .creator-card:hover .creator-img { filter: grayscale(0%); }
 
-    .border-soft {
-      border-color: rgba(255,255,255,0.08);
-    }
+        .creator-info { padding: 20px; }
+        .creator-info h3 { margin: 0 0 15px 0; font-size: 1.4rem; }
+        
+        .video-link {
+            display: flex;
+            align-items: center;
+            background: #252525;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
 
-    .card-hover {
-      transition: all 0.35s ease;
-    }
+        .video-link i { margin-right: 10px; color: #ff0000; }
+        .video-link:hover { background: #333; }
 
-    .card-hover:hover {
-      transform: translateY(-4px);
-      border-color: rgba(255,255,255,0.16);
-    }
+        /* Contact Section */
+        .contact-section { background: #111; text-align: center; padding: 100px 20px; }
+        .social-icons { margin-top: 30px; }
+        .social-icons a { color: white; font-size: 1.5rem; margin: 0 15px; transition: 0.3s; }
+        .social-icons a:hover { color: var(--text-gray); }
 
-    .gradient-text {
-      background: linear-gradient(to right, #ffffff, #8f8f8f);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+        .behance-btn {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 15px 30px;
+            border: 1px solid white;
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+        .behance-btn:hover { background: white; color: black; }
 
-    [x-cloak] {
-      display: none !important;
-    }
-  </style>
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .about-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
-
-<body x-data="{ modalOpen: false, activeVideo: '', activeTitle: '' }">
-
-  <!-- NAVBAR -->
-  <nav class="fixed top-0 left-0 w-full z-50 bg-[#070707]/80 backdrop-blur-xl border-b border-soft">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
-
-      <a href="#" class="text-white text-xl font-semibold tracking-tight">
-        SYFQ<span class="text-red-600">FEE</span>
-      </a>
-
-      <div class="hidden md:flex items-center gap-10 text-sm text-zinc-400">
-        <a href="#work" class="hover:text-white transition">Work</a>
-        <a href="#about" class="hover:text-white transition">About</a>
-        <a href="#contact" class="hover:text-white transition">Contact</a>
-      </div>
-
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <section class="pt-40 pb-28 border-b border-soft">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10">
-
-      <div class="grid lg:grid-cols-2 gap-20 items-center">
-
-        <!-- LEFT -->
-        <div>
-
-          <p class="uppercase tracking-[0.3em] text-xs text-red-500 mb-6 font-medium">
-            Professional Video Editor
-          </p>
-
-          <h1 class="text-5xl md:text-6xl font-semibold leading-tight tracking-tight mb-8 gradient-text">
-            Cinematic editing built for audience retention.
-          </h1>
-
-          <p class="text-zinc-400 text-lg leading-relaxed max-w-xl mb-10">
-            I create high-impact edits for creators, brands, and digital personalities —
-            combining storytelling, pacing, and cinematic visuals to maximize engagement.
-          </p>
-
-          <div class="flex flex-wrap gap-5">
-
-            <a href="#work"
-              class="bg-white text-black px-8 py-4 text-sm font-medium rounded-full hover:bg-zinc-200 transition">
-              View Portfolio
-            </a>
-
-            <a href="https://wa.me/60128376159"
-              class="border border-soft px-8 py-4 text-sm rounded-full hover:border-zinc-500 transition flex items-center gap-2">
-              Contact Me
-              <i data-lucide="arrow-right" class="w-4 h-4"></i>
-            </a>
-
-          </div>
-
-        </div>
-
-        <!-- RIGHT -->
-        <div class="relative">
-
-          <div class="absolute inset-0 bg-red-600/10 blur-3xl rounded-full"></div>
-
-          <img
-            src="fairul.jpeg"
-            alt="Fairul Shafiq"
-            class="relative z-10 w-full max-w-md mx-auto rounded-3xl border border-soft shadow-2xl object-cover"
-          />
-
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- STATS -->
-  <section class="py-16 border-b border-soft">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10">
-
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-
-        <div>
-          <h3 class="text-4xl font-semibold text-white mb-2">5+</h3>
-          <p class="text-zinc-500 text-sm">Years Experience</p>
-        </div>
-
-        <div>
-          <h3 class="text-4xl font-semibold text-white mb-2">100+</h3>
-          <p class="text-zinc-500 text-sm">Edited Projects</p>
-        </div>
-
-        <div>
-          <h3 class="text-4xl font-semibold text-white mb-2">20M+</h3>
-          <p class="text-zinc-500 text-sm">Content Views</p>
-        </div>
-
-        <div>
-          <h3 class="text-4xl font-semibold text-white mb-2">Remote</h3>
-          <p class="text-zinc-500 text-sm">Worldwide Clients</p>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- PORTFOLIO -->
-  <section id="work" class="py-28">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10">
-
-      <div class="flex items-center justify-between mb-16">
-
-        <div>
-          <p class="text-red-500 uppercase tracking-[0.3em] text-xs mb-3">
-            Selected Work
-          </p>
-
-          <h2 class="text-4xl font-semibold text-white">
-            Featured Projects
-          </h2>
-        </div>
-
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-10">
-
-        <!-- CARD -->
-        <div
-          class="group bg-[#0f0f0f] border border-soft rounded-3xl overflow-hidden card-hover cursor-pointer"
-          @click="modalOpen = true; activeVideo = 'https://www.youtube.com/embed/5HlR9A_N7Z8'; activeTitle = 'Isa Isarb'"
-        >
-
-          <div class="aspect-video overflow-hidden">
-            <img
-              src="isa.jpeg"
-              class="w-full h-full object-cover group-hover:scale-105 transition duration-700"
-            />
-          </div>
-
-          <div class="p-8">
-
-            <div class="flex items-center justify-between mb-4">
-
-              <div>
-                <h3 class="text-2xl font-semibold text-white mb-2">
-                  Isa Isarb
-                </h3>
-
-                <p class="text-zinc-500 text-sm">
-                  YouTube Content Editing
-                </p>
-              </div>
-
-              <div class="w-12 h-12 rounded-full border border-soft flex items-center justify-center">
-                <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        <!-- CARD -->
-        <div
-          class="group bg-[#0f0f0f] border border-soft rounded-3xl overflow-hidden card-hover cursor-pointer"
-          @click="modalOpen = true; activeVideo = 'https://www.youtube.com/embed/D_v-Mv-N2X0'; activeTitle = 'Noreen Iman'"
-        >
-
-          <div class="aspect-video overflow-hidden">
-            <img
-              src="noreen.png"
-              class="w-full h-full object-cover group-hover:scale-105 transition duration-700"
-            />
-          </div>
-
-          <div class="p-8">
-
-            <div class="flex items-center justify-between">
-
-              <div>
-                <h3 class="text-2xl font-semibold text-white mb-2">
-                  Noreen Iman
-                </h3>
-
-                <p class="text-zinc-500 text-sm">
-                  Lifestyle Video Production
-                </p>
-              </div>
-
-              <div class="w-12 h-12 rounded-full border border-soft flex items-center justify-center">
-                <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        <!-- CARD -->
-        <div
-          class="group bg-[#0f0f0f] border border-soft rounded-3xl overflow-hidden card-hover cursor-pointer"
-          @click="modalOpen = true; activeVideo = 'https://www.youtube.com/embed/xS5E-xR7M4M'; activeTitle = 'Liana'"
-        >
-
-          <div class="aspect-video overflow-hidden">
-            <img
-              src="liana.jpeg"
-              class="w-full h-full object-cover group-hover:scale-105 transition duration-700"
-            />
-          </div>
-
-          <div class="p-8">
-
-            <div class="flex items-center justify-between">
-
-              <div>
-                <h3 class="text-2xl font-semibold text-white mb-2">
-                  Liana
-                </h3>
-
-                <p class="text-zinc-500 text-sm">
-                  Social Media Storytelling
-                </p>
-              </div>
-
-              <div class="w-12 h-12 rounded-full border border-soft flex items-center justify-center">
-                <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        <!-- CARD -->
-        <div
-          class="group bg-[#0f0f0f] border border-soft rounded-3xl overflow-hidden card-hover cursor-pointer"
-          @click="modalOpen = true; activeVideo = 'https://www.youtube.com/embed/R9E-W7vD8hM'; activeTitle = 'SK Penjahat'"
-        >
-
-          <div class="aspect-video overflow-hidden">
-            <img
-              src="sk_penjahat.jpeg"
-              class="w-full h-full object-cover group-hover:scale-105 transition duration-700"
-            />
-          </div>
-
-          <div class="p-8">
-
-            <div class="flex items-center justify-between">
-
-              <div>
-                <h3 class="text-2xl font-semibold text-white mb-2">
-                  SK Penjahat
-                </h3>
-
-                <p class="text-zinc-500 text-sm">
-                  Gaming Cinematic Intro
-                </p>
-              </div>
-
-              <div class="w-12 h-12 rounded-full border border-soft flex items-center justify-center">
-                <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="py-28 border-t border-soft">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10">
-
-      <div class="grid lg:grid-cols-2 gap-20">
-
-        <div>
-
-          <p class="text-red-500 uppercase tracking-[0.3em] text-xs mb-5">
-            About
-          </p>
-
-          <h2 class="text-4xl font-semibold text-white leading-tight mb-8">
-            Editing with emotion, pacing, and strategy.
-          </h2>
-
-        </div>
-
-        <div>
-
-          <p class="text-zinc-400 text-lg leading-relaxed mb-8">
-            My editing style focuses on audience psychology and cinematic pacing.
-            Every transition, sound design, and visual sequence is crafted to
-            maintain attention and elevate storytelling quality.
-          </p>
-
-          <div class="grid grid-cols-2 gap-8 pt-6 border-t border-soft">
-
+<body>
+
+    <header>
+        <p class="subtitle">PROFESSIONAL VIDEO EDITOR</p>
+        <h1>MUHAMMAD FAIRUL SHAFIQ</h1>
+    </header>
+
+    <div class="container">
+        <div class="about-grid">
             <div>
-              <p class="text-zinc-500 text-sm mb-2">Location</p>
-              <p class="text-white">Malaysia</p>
+                <h2 class="section-title">About Me</h2>
+                <p>Hi! I am Muhammad Fairul Shafiq. I specialize in creating highly engaging and cinematic content for the next generation of creators.</p>
+                <div class="experience-badge">
+                    <h2 style="margin:0">5 YEARS</h2>
+                    <p style="margin:0; color:var(--text-gray)">Experience in Industry</p>
+                </div>
             </div>
-
             <div>
-              <p class="text-zinc-500 text-sm mb-2">Specialization</p>
-              <p class="text-white">Retention Editing</p>
+                <p>I have edited a wide variety of video formats, focusing on high-retention storytelling that helps influencers and brands stand out in a crowded digital landscape.</p>
             </div>
-
-            <div>
-              <p class="text-zinc-500 text-sm mb-2">Software</p>
-              <p class="text-white">Premiere Pro / After Effects</p>
-            </div>
-
-            <div>
-              <p class="text-zinc-500 text-sm mb-2">Availability</p>
-              <p class="text-white">Freelance & Remote</p>
-            </div>
-
-          </div>
-
         </div>
 
-      </div>
+        <h2 class="section-title" style="margin-top: 100px;">Featured Collaborations</h2>
+        
+        <div class="portfolio-grid">
+            <!-- Noreen Iman -->
+            <div class="creator-card">
+                <img src="noreen.png" alt="Noreen Iman" class="creator-img">
+                <div class="creator-info">
+                    <h3>Noreen Iman</h3>
+                    <a href="https://youtube.com/shorts/7oeKaDSfB1A?feature=share" target="_blank" class="video-link"><i class="fab fa-youtube"></i> Watch Short 1</a>
+                </div>
+            </div>
 
-    </div>
-  </section>
+            <!-- Isa ISARB -->
+            <div class="creator-card">
+                <img src="isa.jpeg" alt="Isa ISARB" class="creator-img">
+                <div class="creator-info">
+                    <h3>Isa ISARB</h3>
+                    <a href="https://youtube.com/shorts/6FFYQN3xC0k?feature=share" target="_blank" class="video-link"><i class="fab fa-youtube"></i> Watch Short 1</a>
+                    <a href="https://youtube.com/shorts/JzoY379-hfs?feature=share" target="_blank" class="video-link"><i class="fab fa-youtube"></i> Watch Short 2</a>
+                </div>
+            </div>
 
-  <!-- CONTACT -->
-  <section id="contact" class="py-28 bg-[#0b0b0b] border-t border-soft">
+            <!-- Liana -->
+            <div class="creator-card">
+                <img src="liana.jpeg" alt="Liana" class="creator-img">
+                <div class="creator-info">
+                    <h3>Liana</h3>
+                    <a href="https://youtube.com/shorts/7it8e3b80kk?feature=share" target="_blank" class="video-link"><i class="fab fa-youtube"></i> Watch Short 1</a>
+                    <a href="https://youtube.com/shorts/ybEMMZQwzQE?feature=share" target="_blank" class="video-link"><i class="fab fa-youtube"></i> Watch Short 2</a>
+                    <a href="https://youtube.com/shorts/SxUgiwLsrAs?feature=share" target="_blank" class="video-link"><i class="fab fa-youtube"></i> Watch Short 3</a>
+                </div>
+            </div>
 
-    <div class="max-w-4xl mx-auto px-6 text-center">
+            <!-- SK_penjahat -->
+            <div class="creator-card">
+                <img src="sk_penjahat.jpeg" alt="SK_penjahat" class="creator-img">
+                <div class="creator-info">
+                    <h3>SK_penjahat</h3>
+                    <a href="https://youtube.com/shorts/WclkfoAsEDk?feature=share" target="_blank" class="video-link"><i class="fab fa-youtube"></i> Watch Short 1</a>
+                </div>
+            </div>
+        </div>
 
-      <p class="text-red-500 uppercase tracking-[0.3em] text-xs mb-5">
-        Contact
-      </p>
-
-      <h2 class="text-5xl font-semibold text-white mb-8 leading-tight">
-        Let’s create something cinematic.
-      </h2>
-
-      <p class="text-zinc-400 text-lg max-w-2xl mx-auto leading-relaxed mb-12">
-        Available for creator collaborations, commercial edits,
-        YouTube content, and cinematic productions.
-      </p>
-
-      <div class="flex flex-wrap justify-center gap-5">
-
-        <a
-          href="mailto:afairul99@gmail.com"
-          class="bg-white text-black px-8 py-4 rounded-full text-sm font-medium hover:bg-zinc-200 transition"
-        >
-          Email Me
-        </a>
-
-        <a
-          href="https://wa.me/60128376159"
-          class="border border-soft px-8 py-4 rounded-full text-sm hover:border-zinc-500 transition"
-        >
-          WhatsApp
-        </a>
-
-      </div>
-
-      <div class="flex justify-center gap-8 mt-16 text-zinc-500">
-
-        <a href="https://www.instagram.com/syfq.fee" target="_blank">
-          <i data-lucide="instagram" class="w-5 h-5 hover:text-white transition"></i>
-        </a>
-
-        <a href="https://www.behance.net/gallery/206585543/Activity-Timeline-Editting" target="_blank">
-          <i data-lucide="briefcase" class="w-5 h-5 hover:text-white transition"></i>
-        </a>
-
-        <a href="https://www.threads.net/@feedstudi0" target="_blank">
-          <i data-lucide="at-sign" class="w-5 h-5 hover:text-white transition"></i>
-        </a>
-
-      </div>
-
+        <div style="text-align: center;">
+            <a href="https://www.behance.net/gallery/206585543/Activity-Timeline-Editting" class="behance-btn" target="_blank">View Full Timeline on Behance</a>
+        </div>
     </div>
 
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="py-8 border-t border-soft">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col md:flex-row justify-between items-center gap-4">
-
-      <p class="text-zinc-600 text-sm">
-        © 2025 SYFQFEE Studio
-      </p>
-
-      <p class="text-zinc-700 text-sm">
-        Crafted for modern creators.
-      </p>
-
-    </div>
-  </footer>
-
-  <!-- VIDEO MODAL -->
-  <div
-    x-show="modalOpen"
-    x-cloak
-    x-transition.opacity
-    class="fixed inset-0 z-[999] bg-black/90 backdrop-blur-md flex items-center justify-center p-5"
-  >
-
-    <div
-      class="relative w-full max-w-6xl aspect-video bg-black rounded-3xl overflow-hidden border border-soft"
-      @click.outside="modalOpen = false; activeVideo = ''"
-    >
-
-      <button
-        @click="modalOpen = false; activeVideo = ''"
-        class="absolute top-5 right-5 z-50 bg-black/70 border border-soft text-white px-4 py-2 rounded-full text-sm hover:bg-red-600 transition"
-      >
-        Close
-      </button>
-
-      <iframe
-        class="w-full h-full"
-        :src="activeVideo"
-        frameborder="0"
-        allow="autoplay; encrypted-media"
-        allowfullscreen
-      ></iframe>
-
-    </div>
-
-  </div>
-
-  <script>
-    lucide.createIcons();
-  </script>
+    <section class="contact-section">
+        <h2 class="section-title" style="border:none">Let's Work Together</h2>
+        <p>Email: afairul99@gmail.com | Phone: 0128376159</p>
+        
+        <div class="social-icons">
+            <a href="https://instagram.com/syfq.fee" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://threads.net/@feedstudi0" target="_blank"><i class="fa-brands fa-threads"></i></a>
+        </div>
+    </section>
 
 </body>
 </html>
