@@ -32,6 +32,75 @@
             overflow-x: hidden;
         }
 
+        /* --- INTRO VIDEO PAGE --- */
+        .intro-hero {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        #bg-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -2;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            filter: brightness(0.4); /* Makes text pop over video */
+        }
+
+        .intro-overlay {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle, transparent 20%, var(--bg-deep) 100%);
+            z-index: -1;
+        }
+
+        .intro-content h1 {
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 900;
+            margin: 0;
+            letter-spacing: -2px;
+            text-transform: uppercase;
+            line-height: 0.9;
+        }
+
+        .intro-content p {
+            font-size: 1.2rem;
+            letter-spacing: 5px;
+            color: var(--accent-cyan);
+            margin-top: 20px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            opacity: 0.7;
+        }
+        .scroll-down:hover { opacity: 1; color: var(--accent-cyan); }
+        .scroll-down i { margin-top: 10px; animation: bounce 2s infinite; }
+
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
+
         /* --- RESPONSIVE GLOWING LOGO --- */
         .navbar {
             display: flex;
@@ -68,7 +137,7 @@
         }
 
         /* --- HERO SECTION --- */
-        header {
+        #main-profile {
             padding: 150px 20px 80px 20px;
             text-align: center;
         }
@@ -277,7 +346,26 @@
 </head>
 <body>
 
-    <!-- Responsive Navbar with Logo -->
+    <!-- 1. NEW FULL-SCREEN INTRO VIDEO SECTION -->
+    <section class="intro-hero">
+        <video autoplay muted loop playsinline id="bg-video">
+            <source src="intro.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="intro-overlay"></div>
+        
+        <div class="intro-content">
+            <h1>Fairul<br>Shafiq</h1>
+            <p>Creative Video Editor</p>
+        </div>
+
+        <a href="#main-profile" class="scroll-down">
+            VIEW PORTFOLIO
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <!-- 2. NAVBAR (Kept below intro until scroll) -->
     <nav class="navbar">
         <a href="#" class="logo">
             <div class="logo-box">FS</div> FAIRUL SHAFIQ
@@ -288,7 +376,8 @@
         </div>
     </nav>
 
-    <header>
+    <!-- 3. MAIN PROFILE SECTION (Header) -->
+    <header id="main-profile">
         <div class="profile-wrapper">
             <img src="your-photo.jpg" class="profile-img" onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=Fairul'">
         </div>
@@ -315,7 +404,7 @@
                 <div class="thumb-wrap"><img src="noreen.png"></div>
                 <h3 class="video-title">The Master of Retention: Featured Collaboration with Noreen Iman</h3>
                 <div class="meta">
-                    <span><i class="far fa-calendar"></i> 2026</span>
+                    <span><i class="far fa-calendar"></i> 2024</span>
                     <span><i class="fas fa-video"></i> Vertical Cinema</span>
                 </div>
             </a>
@@ -324,17 +413,16 @@
                 <div class="thumb-wrap"><img src="isa.jpeg"></div>
                 <h3 class="video-title">High-Octane Dynamics: Edit for Isa ISARB Entertainment</h3>
                 <div class="meta">
-                    <span><i class="far fa-calendar"></i> 2026</span>
+                    <span><i class="far fa-calendar"></i> 2024</span>
                     <span><i class="fas fa-bolt"></i> Fast-Paced Cut</span>
                 </div>
             </a>
 
-            <a href="https://youtube.com/shorts/7it8e3b8Okk?feature=share
-" class="video-card" target="_blank">
+            <a href="https://youtube.com/shorts/7it8e3b80kk" class="video-card" target="_blank">
                 <div class="thumb-wrap"><img src="liana.jpeg"></div>
                 <h3 class="video-title">Aesthetic Precision & Advanced Grading: Liana Collection</h3>
                 <div class="meta">
-                    <span><i class="far fa-calendar"></i> 2026</span>
+                    <span><i class="far fa-calendar"></i> 2024</span>
                     <span><i class="fas fa-palette"></i> Color Specialist</span>
                 </div>
             </a>
@@ -343,7 +431,7 @@
                 <div class="thumb-wrap"><img src="sk_penjahat.jpeg"></div>
                 <h3 class="video-title">Sound Design & Visual Flow: Featured Project for SK_penjahat</h3>
                 <div class="meta">
-                    <span><i class="far fa-calendar"></i> 2026</span>
+                    <span><i class="far fa-calendar"></i> 2024</span>
                     <span><i class="fas fa-volume-up"></i> SFX Master</span>
                 </div>
             </a>
@@ -365,7 +453,7 @@
         <!-- Clickable Contact Section -->
         <footer id="contact">
             <h2 style="font-size: 2rem; margin-bottom: 10px;">Let's Create Together</h2>
-            <p style="color: var(--text-dim);">Now accepting new projects for Q3/Q4 2026.</p>
+            <p style="color: var(--text-dim);">Now accepting new projects for Q3/Q4 2024.</p>
 
             <div class="social-grid">
                 <a href="https://wa.me/60128376159" class="social-link whatsapp" target="_blank">
@@ -382,7 +470,7 @@
             </div>
 
             <!-- COPYRIGHT AND DEVELOPER MARK -->
-            <p style="margin-top: 80px; opacity: 0.2; font-size: 0.6rem; letter-spacing: 4px; margin-bottom: 5px;">© 2026 FS EDITING STUDIO | ISA ISARB VIDEO EDITOR - 5 YEARS</p>
+            <p style="margin-top: 80px; opacity: 0.2; font-size: 0.6rem; letter-spacing: 4px; margin-bottom: 5px;">© 2024 FS EDITING STUDIO | ISA ISARB VIDEO EDITOR - 5 YEARS</p>
             <a href="#" class="missieheart">Developed by missieheart</a>
         </footer>
     </div>
