@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   <title>SYFQFEE — Video Editor Portfolio</title>
 
@@ -51,7 +52,7 @@
     }
 
     .container-custom{
-      width:min(1200px,90%);
+      width:min(1280px,90%);
       margin:auto;
     }
 
@@ -77,6 +78,7 @@
       background-image:
       linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+
       background-size:50px 50px;
     }
 
@@ -103,7 +105,7 @@
 
     .portfolio-card:hover img{
       transform:scale(1.08);
-      opacity:0.25;
+      opacity:0.2;
     }
 
     .portfolio-overlay{
@@ -121,21 +123,21 @@
       position:absolute;
       width:700px;
       height:700px;
-      background:radial-gradient(circle,rgba(255,0,0,0.2) 0%, rgba(255,0,0,0) 70%);
+      background:radial-gradient(circle,rgba(255,0,0,0.15) 0%, rgba(255,0,0,0) 70%);
       filter:blur(120px);
       pointer-events:none;
       z-index:-1;
     }
 
     .btn-primary{
-      background:var(--red);
+      background:linear-gradient(to right,#ff2b2b,#ff4b4b);
       color:white;
       transition:0.3s ease;
     }
 
     .btn-primary:hover{
       transform:translateY(-3px);
-      box-shadow:0 15px 40px rgba(255,0,0,0.35);
+      box-shadow:0 15px 40px rgba(255,0,0,0.3);
     }
 
     .btn-secondary{
@@ -148,28 +150,12 @@
       color:black;
     }
 
-    @keyframes float{
-      0%{
-        transform:translateY(0px);
-      }
-      50%{
-        transform:translateY(-12px);
-      }
-      100%{
-        transform:translateY(0px);
-      }
-    }
-
-    .floating{
-      animation:float 5s ease-in-out infinite;
-    }
-
     ::-webkit-scrollbar{
       width:8px;
     }
 
     ::-webkit-scrollbar-track{
-      background:#0a0a0a;
+      background:#080808;
     }
 
     ::-webkit-scrollbar-thumb{
@@ -191,16 +177,17 @@
   <!-- NAVBAR -->
   <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
 
-    <div class="container-custom py-6 flex items-center justify-between">
+    <div class="container-custom py-7 flex items-center justify-between">
 
       <!-- LOGO -->
-      <div class="heading text-2xl md:text-3xl font-extrabold tracking-tight">
-        SYFQ<span class="text-red-500">FEE</span>
-        <span class="text-white/30">.</span>
+      <div class="heading text-3xl font-extrabold tracking-tight">
+
+        SYFQ<span class="text-red-500">FEE</span><span class="text-white/20">.</span>
+
       </div>
 
       <!-- MENU -->
-      <div class="hidden md:flex items-center gap-10 text-sm font-semibold text-gray-300">
+      <div class="hidden md:flex items-center gap-12 text-sm font-semibold text-gray-300">
 
         <a href="#work" class="hover:text-white transition">
           Work
@@ -214,14 +201,21 @@
           Clients
         </a>
 
-        <a href="#contact"
-          class="bg-white text-black px-6 py-3 rounded-full hover:bg-red-500 hover:text-white transition font-bold">
-
-          Let's Talk
-
+        <a href="#about" class="hover:text-white transition">
+          About
         </a>
 
       </div>
+
+      <!-- BUTTON -->
+      <a href="#contact"
+        class="border border-red-500/40 px-8 py-4 rounded-full text-sm font-bold tracking-[0.15em] hover:bg-red-500 transition flex items-center gap-3">
+
+        LET'S TALK
+
+        <div class="w-2 h-2 rounded-full bg-red-500"></div>
+
+      </a>
 
     </div>
 
@@ -230,55 +224,63 @@
   <!-- HERO -->
   <section class="relative min-h-screen flex items-center hero-grid overflow-hidden">
 
+    <!-- Glow -->
     <div class="glow top-[-200px] right-[-150px]"></div>
 
-    <div class="container-custom grid lg:grid-cols-2 gap-20 items-center pt-36 pb-24">
+    <div class="container-custom grid lg:grid-cols-2 gap-16 items-center pt-36 pb-24">
 
       <!-- LEFT -->
-      <div>
+      <div class="max-w-[620px]">
 
-        <div class="inline-flex items-center gap-3 glass px-5 py-3 rounded-full mb-8">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-3 glass px-5 py-3 rounded-full mb-10">
 
           <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
 
           <span class="text-xs uppercase tracking-[0.25em] text-gray-300 font-semibold">
+
             Available For Projects
+
           </span>
 
         </div>
 
-        <!-- TITLE -->
-        <h1 class="heading text-[4.5rem] md:text-[8rem] leading-[0.85] font-extrabold mb-8">
+        <!-- Heading -->
+        <h1 class="heading text-[4rem] md:text-[6.5rem] leading-[0.92] tracking-[-0.05em] font-extrabold mb-8">
 
-          EDITS <br>
+          EDITS THAT <br>
 
-          THAT <span class="red-gradient">HOLD</span> <br>
+          <span class="red-gradient">
+            HOLD
+          </span>
 
           ATTENTION
 
         </h1>
 
-        <p class="text-gray-400 text-lg leading-relaxed max-w-xl mb-10">
+        <!-- Desc -->
+        <p class="text-gray-400 text-lg leading-relaxed max-w-[560px] mb-12">
 
-          I create cinematic, fast-paced edits engineered for retention,
-          storytelling, engagement, and viral short-form performance.
+          Cinematic, fast-paced edits engineered for retention,
+          storytelling, and viral performance across TikTok,
+          YouTube Shorts, and Reels.
 
         </p>
 
-        <!-- BUTTONS -->
-        <div class="flex flex-wrap gap-5">
+        <!-- Buttons -->
+        <div class="flex flex-wrap gap-5 mb-16">
 
           <a href="#work"
-            class="btn-primary px-8 py-4 rounded-full text-sm uppercase tracking-[0.2em] font-bold flex items-center gap-3">
+            class="btn-primary px-8 py-4 rounded-full text-sm uppercase tracking-[0.18em] font-bold flex items-center gap-3">
 
             View Portfolio
 
-            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
 
           </a>
 
           <a href="#contact"
-            class="btn-secondary px-8 py-4 rounded-full text-sm uppercase tracking-[0.2em] font-bold">
+            class="btn-secondary px-8 py-4 rounded-full text-sm uppercase tracking-[0.18em] font-bold">
 
             Contact Me
 
@@ -286,16 +288,16 @@
 
         </div>
 
-        <!-- STATS -->
-        <div class="grid grid-cols-3 gap-8 mt-16">
+        <!-- Stats -->
+        <div class="grid grid-cols-3 gap-10 border-t border-white/10 pt-10">
 
           <div>
 
-            <h3 class="heading text-4xl font-bold text-white">
+            <h3 class="heading text-5xl font-bold mb-2">
               50+
             </h3>
 
-            <p class="text-gray-500 text-sm mt-2">
+            <p class="text-gray-500 text-sm uppercase tracking-[0.15em]">
               Projects Edited
             </p>
 
@@ -303,11 +305,11 @@
 
           <div>
 
-            <h3 class="heading text-4xl font-bold text-white">
+            <h3 class="heading text-5xl font-bold mb-2">
               10M+
             </h3>
 
-            <p class="text-gray-500 text-sm mt-2">
+            <p class="text-gray-500 text-sm uppercase tracking-[0.15em]">
               Views Generated
             </p>
 
@@ -315,11 +317,11 @@
 
           <div>
 
-            <h3 class="heading text-4xl font-bold text-white">
+            <h3 class="heading text-5xl font-bold mb-2">
               4+
             </h3>
 
-            <p class="text-gray-500 text-sm mt-2">
+            <p class="text-gray-500 text-sm uppercase tracking-[0.15em]">
               Top Creators
             </p>
 
@@ -330,57 +332,79 @@
       </div>
 
       <!-- RIGHT -->
-      <div class="relative">
+      <div class="relative flex justify-center">
 
-        <div class="absolute inset-0 bg-red-500/20 blur-[140px] rounded-full"></div>
+        <!-- Glow -->
+        <div class="absolute inset-0 bg-red-500/10 blur-[120px] rounded-full"></div>
 
-        <!-- MAIN CARD -->
-        <div class="relative rounded-[40px] overflow-hidden border border-white/10 bg-[#0a0a0a] h-[750px] flex items-center justify-center">
+        <!-- Card -->
+        <div class="relative w-full max-w-[620px] rounded-[40px] overflow-hidden border border-white/10 bg-[#080808] p-12">
 
-          <!-- GRID -->
-          <div class="absolute inset-0 opacity-20"
+          <!-- Overlay Grid -->
+          <div class="absolute inset-0 opacity-[0.04]"
             style="
               background-image:
-              linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-              background-size:40px 40px;
+              linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+
+              background-size:32px 32px;
             ">
           </div>
 
-          <!-- RED GLOW -->
-          <div class="absolute w-[400px] h-[400px] bg-red-500/20 blur-[120px] rounded-full animate-pulse"></div>
+          <!-- Content -->
+          <div class="relative z-10">
 
-          <!-- CONTENT -->
-          <div class="relative z-10 text-center px-10">
+            <!-- Icon -->
+            <div class="w-24 h-24 rounded-full border border-red-500/30 bg-black flex items-center justify-center mb-14 mx-auto shadow-[0_0_50px_rgba(255,0,0,0.2)]">
 
-            <div class="w-28 h-28 mx-auto mb-8 rounded-full border border-white/10 bg-black flex items-center justify-center floating">
-
-              <i data-lucide="clapperboard" class="w-12 h-12 text-red-500"></i>
+              <i data-lucide="clapperboard" class="w-10 h-10 text-red-500"></i>
 
             </div>
 
-            <p class="uppercase tracking-[0.4em] text-red-500 text-xs font-bold mb-6">
+            <!-- Mini -->
+            <p class="text-center text-red-500 uppercase tracking-[0.35em] text-xs font-bold mb-8">
+
               Anonymous Editor
+
             </p>
 
-            <h2 class="heading text-5xl md:text-7xl leading-none mb-8">
+            <!-- Main -->
+            <h2 class="heading text-center text-5xl md:text-6xl leading-[1] tracking-[-0.04em] font-extrabold mb-8">
 
               THE EDITOR <br>
 
-              BEHIND THE <span class="red-gradient">VIRAL CUTS</span>
+              BEHIND THE <br>
+
+              <span class="red-gradient">
+
+                VIRAL CUTS
+
+              </span>
 
             </h2>
 
-            <p class="text-gray-400 max-w-md mx-auto leading-relaxed text-lg">
+            <!-- Desc -->
+            <p class="text-center text-gray-400 text-lg leading-relaxed max-w-[440px] mx-auto mb-12">
 
-              I let the edits speak louder than the face.
-              Cinematic storytelling engineered for retention,
-              emotion, and high-performing content.
+              Premium editing focused on retention,
+              pacing, cinematic storytelling,
+              and audience engagement.
 
             </p>
 
-            <!-- TAGS -->
-            <div class="flex flex-wrap justify-center gap-4 mt-12">
+            <!-- Divider -->
+            <div class="flex items-center justify-center gap-4 mb-12">
+
+              <div class="w-20 h-[1px] bg-white/10"></div>
+
+              <div class="w-2 h-2 rounded-full bg-red-500"></div>
+
+              <div class="w-20 h-[1px] bg-white/10"></div>
+
+            </div>
+
+            <!-- Tags -->
+            <div class="flex flex-wrap justify-center gap-4">
 
               <div class="glass px-5 py-3 rounded-full text-sm text-gray-300">
                 TikTok Editing
@@ -407,112 +431,45 @@
   </section>
 
   <!-- CLIENTS -->
-  <section id="clients" class="py-28 bg-[#090909]">
+  <section id="clients" class="py-28 border-t border-white/5">
 
     <div class="container-custom">
 
-      <div class="flex items-end justify-between mb-16 flex-wrap gap-6">
+      <div class="flex items-center gap-6 mb-14">
 
-        <div>
-
-          <p class="text-red-500 uppercase tracking-[0.25em] text-xs font-bold mb-4">
-            Trusted By
-          </p>
-
-          <h2 class="heading text-5xl md:text-7xl leading-none">
-
-            TOP <span class="gradient-text">CREATORS</span>
-
-          </h2>
-
-        </div>
-
-        <p class="max-w-md text-gray-500 leading-relaxed">
-
-          Collaborating with creators and influencers who prioritize storytelling,
-          retention, and premium content quality.
-
+        <p class="text-gray-400 uppercase tracking-[0.25em] text-sm">
+          Trusted By Top Creators
         </p>
+
+        <div class="w-20 h-[1px] bg-white/10"></div>
 
       </div>
 
-      <!-- CLIENT GRID -->
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-        <!-- CARD -->
-        <div class="card rounded-[30px] p-5">
-
-          <div class="rounded-[24px] overflow-hidden aspect-square mb-6">
-
-            <img src="isa.jpeg" class="w-full h-full object-cover">
-
-          </div>
-
-          <h3 class="heading text-3xl mb-2">
-            Isa Isarb
+        <div class="card rounded-[24px] p-10 text-center">
+          <h3 class="heading text-4xl text-white/80">
+            ISA ISARB
           </h3>
-
-          <p class="text-gray-500 text-sm mb-6">
-            Retention Editing
-          </p>
-
         </div>
 
-        <!-- CARD -->
-        <div class="card rounded-[30px] p-5">
-
-          <div class="rounded-[24px] overflow-hidden aspect-square mb-6">
-
-            <img src="noreen.png" class="w-full h-full object-cover">
-
-          </div>
-
-          <h3 class="heading text-3xl mb-2">
-            Noreen Iman
+        <div class="card rounded-[24px] p-10 text-center">
+          <h3 class="heading text-4xl text-white/60">
+            NOREEN IMAN
           </h3>
-
-          <p class="text-gray-500 text-sm mb-6">
-            Lifestyle Shorts
-          </p>
-
         </div>
 
-        <!-- CARD -->
-        <div class="card rounded-[30px] p-5">
-
-          <div class="rounded-[24px] overflow-hidden aspect-square mb-6">
-
-            <img src="liana.jpeg" class="w-full h-full object-cover">
-
-          </div>
-
-          <h3 class="heading text-3xl mb-2">
-            Liana
+        <div class="card rounded-[24px] p-10 text-center">
+          <h3 class="heading text-4xl text-white/50">
+            LIANA
           </h3>
-
-          <p class="text-gray-500 text-sm mb-6">
-            TikTok Content
-          </p>
-
         </div>
 
-        <!-- CARD -->
-        <div class="card rounded-[30px] p-5">
-
-          <div class="rounded-[24px] overflow-hidden aspect-square mb-6">
-
-            <img src="sk_penjahat.jpeg" class="w-full h-full object-cover">
-
-          </div>
-
-          <h3 class="heading text-3xl mb-2">
-            SK Penjahat
+        <div class="card rounded-[24px] p-10 text-center">
+          <h3 class="heading text-4xl text-white/40">
+            SK PENJAHAT
           </h3>
-
-          <p class="text-gray-500 text-sm mb-6">
-            Gaming Storytelling
-          </p>
-
         </div>
 
       </div>
@@ -521,85 +478,130 @@
 
   </section>
 
-  <!-- SERVICES -->
-  <section id="services" class="py-28 bg-white text-black">
+  <!-- PORTFOLIO -->
+  <section id="work" class="py-32">
 
     <div class="container-custom">
 
-      <div class="text-center mb-20">
+      <!-- Heading -->
+      <div class="mb-20">
 
         <p class="text-red-500 uppercase tracking-[0.25em] text-xs font-bold mb-5">
-          Expertise
+
+          Selected Work
+
         </p>
 
         <h2 class="heading text-5xl md:text-7xl">
-          WHAT I DO
+
+          FEATURED PROJECTS
+
         </h2>
 
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8">
+      <!-- Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-        <!-- SERVICE -->
-        <div class="border border-black/10 rounded-[30px] p-10 hover:border-red-500 transition">
+        <!-- Card -->
+        <div class="portfolio-card relative rounded-[32px] overflow-hidden border border-white/10 h-[580px]">
 
-          <div class="w-16 h-16 rounded-2xl bg-red-500 text-white flex items-center justify-center mb-8">
+          <img
+            src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=1200"
+            class="w-full h-full object-cover">
 
-            <i data-lucide="zap" class="w-7 h-7"></i>
+          <div class="absolute inset-0 bg-black/70"></div>
+
+          <div class="portfolio-overlay absolute inset-0 flex flex-col justify-end p-10">
+
+            <p class="text-red-500 uppercase tracking-[0.25em] text-xs font-bold mb-4">
+
+              Viral Retention Edit
+
+            </p>
+
+            <h3 class="heading text-5xl mb-6">
+
+              ISA ISARB
+
+            </h3>
+
+            <a href="#"
+              class="w-fit bg-white text-black px-7 py-4 rounded-full font-bold hover:bg-red-500 hover:text-white transition">
+
+              Watch Project
+
+            </a>
 
           </div>
-
-          <h3 class="heading text-4xl mb-6">
-            Hook Strategy
-          </h3>
-
-          <p class="text-zinc-600 leading-relaxed">
-
-            High-retention openings engineered to stop the scroll instantly.
-
-          </p>
 
         </div>
 
-        <!-- SERVICE -->
-        <div class="border border-black/10 rounded-[30px] p-10 hover:border-red-500 transition">
+        <!-- Card -->
+        <div class="portfolio-card relative rounded-[32px] overflow-hidden border border-white/10 h-[580px]">
 
-          <div class="w-16 h-16 rounded-2xl bg-red-500 text-white flex items-center justify-center mb-8">
+          <img
+            src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=1200"
+            class="w-full h-full object-cover">
 
-            <i data-lucide="volume-2" class="w-7 h-7"></i>
+          <div class="absolute inset-0 bg-black/70"></div>
+
+          <div class="portfolio-overlay absolute inset-0 flex flex-col justify-end p-10">
+
+            <p class="text-red-500 uppercase tracking-[0.25em] text-xs font-bold mb-4">
+
+              TikTok Content
+
+            </p>
+
+            <h3 class="heading text-5xl mb-6">
+
+              LIANA
+
+            </h3>
+
+            <a href="#"
+              class="w-fit bg-white text-black px-7 py-4 rounded-full font-bold hover:bg-red-500 hover:text-white transition">
+
+              Watch Project
+
+            </a>
 
           </div>
-
-          <h3 class="heading text-4xl mb-6">
-            Sound Design
-          </h3>
-
-          <p class="text-zinc-600 leading-relaxed">
-
-            Cinematic sound layering, impact effects, and music synchronization.
-
-          </p>
 
         </div>
 
-        <!-- SERVICE -->
-        <div class="border border-black/10 rounded-[30px] p-10 hover:border-red-500 transition">
+        <!-- Card -->
+        <div class="portfolio-card relative rounded-[32px] overflow-hidden border border-white/10 h-[580px]">
 
-          <div class="w-16 h-16 rounded-2xl bg-red-500 text-white flex items-center justify-center mb-8">
+          <img
+            src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&q=80&w=1200"
+            class="w-full h-full object-cover">
 
-            <i data-lucide="film" class="w-7 h-7"></i>
+          <div class="absolute inset-0 bg-black/70"></div>
+
+          <div class="portfolio-overlay absolute inset-0 flex flex-col justify-end p-10">
+
+            <p class="text-red-500 uppercase tracking-[0.25em] text-xs font-bold mb-4">
+
+              Gaming Storytelling
+
+            </p>
+
+            <h3 class="heading text-5xl mb-6">
+
+              SK PENJAHAT
+
+            </h3>
+
+            <a href="#"
+              class="w-fit bg-white text-black px-7 py-4 rounded-full font-bold hover:bg-red-500 hover:text-white transition">
+
+              Watch Project
+
+            </a>
 
           </div>
-
-          <h3 class="heading text-4xl mb-6">
-            Narrative Editing
-          </h3>
-
-          <p class="text-zinc-600 leading-relaxed">
-
-            Story-driven pacing designed to maximize engagement and emotion.
-
-          </p>
 
         </div>
 
@@ -610,14 +612,16 @@
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="py-32 relative overflow-hidden">
+  <section id="contact" class="py-32 border-t border-white/5 relative overflow-hidden">
 
-    <div class="glow bottom-[-250px] left-[-150px]"></div>
+    <div class="glow bottom-[-300px] left-[-200px]"></div>
 
     <div class="container-custom text-center">
 
       <p class="text-red-500 uppercase tracking-[0.25em] text-xs font-bold mb-5">
+
         Contact
+
       </p>
 
       <h2 class="heading text-5xl md:text-8xl leading-none mb-10">
@@ -630,8 +634,8 @@
 
       <p class="max-w-2xl mx-auto text-gray-400 text-lg leading-relaxed mb-14">
 
-        Looking for a premium editor who understands retention,
-        storytelling, and cinematic pacing?
+        Looking for premium edits that keep audiences watching?
+        Let's build content designed for engagement and performance.
 
       </p>
 
@@ -653,11 +657,10 @@
 
       </div>
 
-      <!-- SOCIAL -->
+      <!-- Social -->
       <div class="flex justify-center gap-5">
 
-        <a href="https://instagram.com/"
-          target="_blank"
+        <a href="#"
           class="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center hover:bg-red-500 hover:border-red-500 transition">
 
           <i data-lucide="instagram" class="w-6 h-6"></i>
