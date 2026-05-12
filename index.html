@@ -1,566 +1,224 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYFQFEE — Editor & Visual Storyteller</title>
 
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- Tailwind & Plugins -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Alpine.js (For Modals, Filters, and Mobile Menu) -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
 
-  <title>SYFQFEE — Cinematic Video Editor Portfolio</title>
-
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --bg: #09090b;       /* Premium Zinc Dark */
-      --card: #18181b;     /* zinc-900 */
-      --border: rgba(255, 255, 255, 0.06);
-      --text: #f4f4f5;     /* zinc-100 */
-      --muted: #a1a1aa;    /* zinc-400 */
-      --accent: #e11d48;   /* Cinematic Crimson Rose */
-      --accent-glow: rgba(225, 29, 72, 0.15);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Inter', sans-serif;
-      overflow-x: hidden;
-      letter-spacing: -0.01em;
-    }
-
-    .heading {
-      font-family: 'Syne', sans-serif;
-      letter-spacing: -0.03em;
-    }
-
-    .container-custom {
-      width: min(1200px, 90%);
-      margin: auto;
-    }
-
-    .glass-nav {
-      background: rgba(9, 9, 11, 0.7);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .glass {
-      background: rgba(24, 24, 27, 0.4);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--border);
-    }
-
-    .gradient-text {
-      background: linear-gradient(135deg, #ffffff 30%, #a1a1aa 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .accent-gradient {
-      background: linear-gradient(135deg, #f43f5e 0%, #be123c 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-grid {
-      background-image: 
-        radial-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 0),
-        radial-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 0);
-      background-size: 40px 40px;
-      background-position: 0 0, 20px 20px;
-    }
-
-    .card {
-      background: rgba(24, 24, 27, 0.3);
-      border: 1px solid var(--border);
-      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(225, 29, 72, 0.3);
-      background: rgba(24, 24, 27, 0.5);
-      box-shadow: 0 20px 40px var(--accent-glow);
-    }
-
-    .portfolio-card {
-      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .portfolio-card img {
-      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .portfolio-card:hover img {
-      transform: scale(1.05);
-    }
-
-    .portfolio-overlay {
-      background: linear-gradient(to top, rgba(9,9,11,0.95) 0%, rgba(9,9,11,0.4) 60%, transparent 100%);
-      transition: all 0.4s ease;
-    }
-
-    .glow {
-      position: absolute;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(225,29,72,0.08) 0%, rgba(0,0,0,0) 70%);
-      filter: blur(80px);
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 4px 20px rgba(225, 29, 72, 0.15);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(225, 29, 72, 0.35);
-    }
-
-    .btn-secondary {
-      border: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.02);
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .btn-secondary:hover {
-      background: #f4f4f5;
-      color: #09090b;
-      border-color: #f4f4f5;
-      transform: translateY(-2px);
-    }
-
-    /* Scrollbar Styling */
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #09090b;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #27272a;
-      border-radius: 999px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--accent);
-    }
-  </style>
-</head>
-
-<body>
-
-  <!-- SUBTLE NOISE OVERLAY -->
-  <div class="fixed inset-0 pointer-events-none opacity-[0.015] z-50"
-    style="background-image:url('https://grainy-gradients.vercel.app/noise.svg');">
-  </div>
-
-  <!-- NAVBAR -->
-  <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
-    <div class="container-custom py-5 flex items-center justify-between">
-      <!-- LOGO -->
-      <a href="#" class="heading text-xl font-black tracking-tight flex items-center gap-1.5">
-        SYFQ<span class="text-rose-500">FEE</span><span class="text-zinc-600">/</span>
-      </a>
-
-      <!-- MENU -->
-      <div class="hidden md:flex items-center gap-10 text-xs uppercase tracking-widest font-semibold text-zinc-400">
-        <a href="#work" class="hover:text-white transition duration-300">Work</a>
-        <a href="#services" class="hover:text-white transition duration-300">Services</a>
-        <a href="#clients" class="hover:text-white transition duration-300">Clients</a>
-        <a href="#contact" class="hover:text-white transition duration-300">Contact</a>
-      </div>
-
-      <!-- BUTTON -->
-      <a href="#contact"
-        class="border border-white/10 px-6 py-2.5 rounded-full text-xs font-bold tracking-widest hover:border-rose-500 hover:bg-rose-500/10 transition duration-300 flex items-center gap-2">
-        LET'S TALK
-        <div class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-ping"></div>
-      </a>
-    </div>
-  </nav>
-
-  <!-- HERO SECTION -->
-  <section class="relative min-h-screen flex items-center hero-grid overflow-hidden pt-28 pb-16">
-    <!-- Ambient Glows -->
-    <div class="glow top-[-100px] right-[-100px]"></div>
-    <div class="glow bottom-[-200px] left-[-200px]"></div>
-
-    <div class="container-custom grid lg:grid-cols-12 gap-12 items-center">
-      
-      <!-- LEFT CONTENT (7 cols on desktop) -->
-      <div class="lg:col-span-7 flex flex-col items-start text-left">
-        <!-- Badge -->
-        <div class="inline-flex items-center gap-2.5 glass px-4 py-2 rounded-full mb-8">
-          <span class="relative flex h-2 w-2">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-2 w-2 bg-rose-500"></span>
-          </span>
-          <span class="text-[10px] uppercase tracking-[0.2em] text-zinc-300 font-bold">
-            Available for Q2 projects
-          </span>
-        </div>
-
-        <!-- Heading -->
-        <h1 class="heading text-4xl sm:text-5xl md:text-6xl lg:text-[4.8rem] leading-[0.95] font-extrabold mb-6 gradient-text">
-          EDITS THAT<br>
-          <span class="accent-gradient">HOLD</span> ATTENTION
-        </h1>
-
-        <!-- Description -->
-        <p class="text-zinc-400 text-base md:text-lg leading-relaxed max-w-[520px] mb-8">
-          Cinematic, retention-engineered edits built for viral performance across YouTube, TikTok, and Instagram Reels.
-        </p>
-
-        <!-- Buttons -->
-        <div class="flex flex-wrap gap-4 mb-12">
-          <a href="#work" class="btn-primary px-7 py-3.5 rounded-full text-xs uppercase tracking-widest font-bold flex items-center gap-2">
-            View Work
-            <i data-lucide="arrow-down" class="w-3.5 h-3.5"></i>
-          </a>
-          <a href="#contact" class="btn-secondary px-7 py-3.5 rounded-full text-xs uppercase tracking-widest font-bold">
-            Contact
-          </a>
-        </div>
-
-        <!-- Stats Grid (Sleek Minimalist Look) -->
-        <div class="grid grid-cols-3 gap-8 sm:gap-12 border-t border-white/5 pt-8 w-full max-w-[500px]">
-          <div>
-            <h3 class="heading text-3xl md:text-4xl font-extrabold mb-1">50+</h3>
-            <p class="text-zinc-500 text-[10px] uppercase tracking-widest font-bold">Cuts Completed</p>
-          </div>
-          <div>
-            <h3 class="heading text-3xl md:text-4xl font-extrabold mb-1">10M+</h3>
-            <p class="text-zinc-500 text-[10px] uppercase tracking-widest font-bold">Views Generated</p>
-          </div>
-          <div>
-            <h3 class="heading text-3xl md:text-4xl font-extrabold mb-1">4+</h3>
-            <p class="text-zinc-500 text-[10px] uppercase tracking-widest font-bold">Partnerships</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- RIGHT CONTENT: Editorial Visual representation (5 cols on desktop) -->
-      <div class="lg:col-span-5 relative flex justify-center w-full">
-        <div class="absolute inset-0 bg-rose-500/5 blur-[80px] rounded-full"></div>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #050505;
+            color: #fafafa;
+        }
+        .font-heading { font-family: 'Plus Jakarta Sans', sans-serif; }
         
-        <!-- Video Editor Timeline Mockup Card -->
-        <div class="relative w-full max-w-[420px] rounded-2xl border border-white/10 bg-zinc-900/60 p-6 shadow-2xl backdrop-blur-md">
-          <!-- Window Header bar -->
-          <div class="flex items-center justify-between mb-6 border-b border-white/5 pb-4">
-            <div class="flex items-center gap-1.5">
-              <span class="w-2.5 h-2.5 rounded-full bg-rose-500/30"></span>
-              <span class="w-2.5 h-2.5 rounded-full bg-zinc-700"></span>
-              <span class="w-2.5 h-2.5 rounded-full bg-zinc-700"></span>
+        /* Smooth Custom Scrollbar */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #444; }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to bottom right, #fff 50%, #666 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .active-filter {
+            background: #fff !important;
+            color: #000 !important;
+        }
+    </style>
+</head>
+<body x-data="{ mobileMenu: false, filter: 'all', modalOpen: false, activeVideo: '' }">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed w-full z-50 border-b border-white/5 bg-black/50 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="font-heading text-2xl tracking-tighter font-extrabold italic">
+                SYFQ<span class="text-blue-500">FEE</span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-10 text-sm font-medium text-zinc-400">
+                <a href="#work" class="hover:text-white transition">Portfolio</a>
+                <a href="#services" class="hover:text-white transition">Services</a>
+                <a href="#clients" class="hover:text-white transition">Clients</a>
+                <a href="#contact" class="bg-white text-black px-5 py-2 rounded-full font-bold hover:bg-zinc-200 transition">Let's Collaborate</a>
             </div>
-            <span class="text-[10px] font-mono tracking-wider text-zinc-500 uppercase">Sequencer.v1</span>
-          </div>
 
-          <!-- Video Viewport representation -->
-          <div class="relative aspect-video rounded-lg overflow-hidden bg-black border border-white/5 mb-6 group">
-            <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=800" 
-              class="w-full h-full object-cover opacity-60 filter grayscale contrast-125" alt="Editing monitor mockup">
-            <!-- Central Play Overlay Button -->
-            <div class="absolute inset-0 flex items-center justify-center">
-              <div class="w-12 h-12 rounded-full bg-rose-500/20 border border-rose-500/40 flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition duration-300">
-                <i data-lucide="play" class="w-5 h-5 text-rose-500 fill-rose-500"></i>
-              </div>
+            <!-- Mobile Toggle -->
+            <button @click="mobileMenu = !mobileMenu" class="md:hidden text-white">
+                <i data-lucide="menu" x-show="!mobileMenu"></i>
+                <i data-lucide="x" x-show="mobileMenu"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div x-show="mobileMenu" x-transition class="fixed inset-0 top-20 bg-black z-40 p-6 md:hidden">
+            <div class="flex flex-col gap-8 text-3xl font-bold font-heading">
+                <a @click="mobileMenu = false" href="#work">Work</a>
+                <a @click="mobileMenu = false" href="#services">Services</a>
+                <a @click="mobileMenu = false" href="#clients">Clients</a>
+                <a @click="mobileMenu = false" href="#contact" class="text-blue-500">Contact</a>
             </div>
-          </div>
+        </div>
+    </nav>
 
-          <!-- Timeline UI Visualizer -->
-          <div class="space-y-3">
-            <div class="flex justify-between items-center text-[10px] font-mono text-zinc-500">
-              <span>00:14:02</span>
-              <span class="text-rose-500">Active Cut</span>
+    <!-- HERO SECTION -->
+    <header class="relative pt-44 pb-20 overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-blue-600/10 blur-[120px] rounded-full -z-10"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-2 glass px-3 py-1 rounded-full text-xs font-bold tracking-widest text-zinc-400 mb-8 uppercase">
+                <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
+                Accepting New Clients
             </div>
-            <!-- Audio Track Visuals -->
-            <div class="h-6 bg-zinc-950/80 rounded border border-white/5 flex items-center px-2 gap-1 overflow-hidden">
-              <div class="w-1.5 h-3 bg-rose-500 rounded-sm"></div>
-              <div class="w-2.5 h-4 bg-rose-600 rounded-sm"></div>
-              <div class="w-2 h-2.5 bg-rose-500 rounded-sm"></div>
-              <div class="w-3 h-5 bg-zinc-700 rounded-sm"></div>
-              <div class="w-1 h-3 bg-zinc-700 rounded-sm"></div>
-              <div class="w-2 h-4 bg-rose-500 rounded-sm"></div>
-              <div class="w-4 h-2 bg-rose-600 rounded-sm"></div>
-              <div class="w-1.5 h-4 bg-zinc-700 rounded-sm"></div>
-              <div class="w-2 h-5 bg-rose-500 rounded-sm"></div>
-              <div class="w-3 h-3 bg-zinc-700 rounded-sm"></div>
-              <div class="w-2.5 h-4 bg-rose-500 rounded-sm"></div>
-            </div>
-            <!-- Subtitle Track -->
-            <div class="h-5 bg-zinc-950/50 rounded border border-white/5 flex items-center justify-center text-[8px] tracking-[0.2em] font-mono uppercase text-zinc-400">
-              [ SOUND_EFFECT_RISER.WAV ]
-            </div>
-          </div>
-        </div>
-      </div>
+            
+            <h1 class="font-heading text-5xl md:text-8xl font-black leading-[0.9] tracking-tighter mb-8 text-gradient">
+                HIGH RETENTION <br> VISUALS FOR CREATORS.
+            </h1>
+            
+            <p class="max-w-xl mx-auto text-zinc-400 text-lg md:text-xl mb-10 leading-relaxed">
+                I help creators and brands dominate social algorithms through cinematic pacing and psychological storytelling.
+            </p>
 
-    </div>
-  </section>
-
-  <!-- CLIENTS SECTION -->
-  <section id="clients" class="py-20 border-t border-white/5">
-    <div class="container-custom">
-      <div class="flex items-center gap-4 mb-10">
-        <p class="text-zinc-500 uppercase tracking-[0.25em] text-xs font-bold">
-          Trusted Partners
-        </p>
-        <div class="h-[1px] bg-white/5 flex-grow"></div>
-      </div>
-
-      <!-- Minimalist Clean Grid -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div class="border border-white/5 rounded-xl py-6 flex items-center justify-center bg-zinc-950/20 hover:border-white/10 transition">
-          <span class="heading text-lg font-bold text-zinc-400 tracking-widest">ISA ISARB</span>
-        </div>
-        <div class="border border-white/5 rounded-xl py-6 flex items-center justify-center bg-zinc-950/20 hover:border-white/10 transition">
-          <span class="heading text-lg font-bold text-zinc-500 tracking-widest">NOREEN IMAN</span>
-        </div>
-        <div class="border border-white/5 rounded-xl py-6 flex items-center justify-center bg-zinc-950/20 hover:border-white/10 transition">
-          <span class="heading text-lg font-bold text-zinc-600 tracking-widest">LIANA</span>
-        </div>
-        <div class="border border-white/5 rounded-xl py-6 flex items-center justify-center bg-zinc-950/20 hover:border-white/10 transition">
-          <span class="heading text-lg font-bold text-zinc-500 tracking-widest">SK PENJAHAT</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PORTFOLIO SECTION -->
-  <section id="work" class="py-24 border-t border-white/5">
-    <div class="container-custom">
-      
-      <!-- Heading -->
-      <div class="mb-16">
-        <p class="text-rose-500 uppercase tracking-[0.25em] text-xs font-bold mb-3">
-          Curated Showcase
-        </p>
-        <h2 class="heading text-3xl sm:text-4xl md:text-5xl font-black">
-          FEATURED PROJECTS.
-        </h2>
-      </div>
-
-      <!-- Grid -->
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-        <!-- Portfolio Item 1 -->
-        <div class="portfolio-card group relative rounded-2xl overflow-hidden border border-white/5 aspect-[4/5] bg-zinc-900">
-          <!-- Thumbnail Image -->
-          <img
-            src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=1200"
-            class="w-full h-full object-cover filter brightness-[0.7] contrast-[1.05]" alt="Creative editing work">
-
-          <!-- Matte Overlay -->
-          <div class="portfolio-overlay absolute inset-0 flex flex-col justify-end p-8">
-            <div class="transform translate-y-4 group-hover:translate-y-0 transition duration-300">
-              <p class="text-rose-500 uppercase tracking-widest text-[10px] font-bold mb-2">
-                Retention Edit / Campaign
-              </p>
-              <h3 class="heading text-3xl font-extrabold mb-4 text-white">
-                ISA ISARB
-              </h3>
-              <!-- Button overlay indicator -->
-              <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <a href="#" class="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-white bg-white/10 hover:bg-white hover:text-black px-5 py-2.5 rounded-full transition duration-300">
-                  Play Clip
-                  <i data-lucide="play" class="w-3 h-3 fill-current"></i>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#work" class="w-full sm:w-auto bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-full font-bold transition flex items-center justify-center gap-2">
+                    Explore Work <i data-lucide="play-circle" class="w-5 h-5"></i>
                 </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Portfolio Item 2 -->
-        <div class="portfolio-card group relative rounded-2xl overflow-hidden border border-white/5 aspect-[4/5] bg-zinc-900">
-          <img
-            src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=1200"
-            class="w-full h-full object-cover filter brightness-[0.7] contrast-[1.05]" alt="TikTok storytelling curation">
-
-          <div class="portfolio-overlay absolute inset-0 flex flex-col justify-end p-8">
-            <div class="transform translate-y-4 group-hover:translate-y-0 transition duration-300">
-              <p class="text-rose-500 uppercase tracking-widest text-[10px] font-bold mb-2">
-                Reel / Cinematic Content
-              </p>
-              <h3 class="heading text-3xl font-extrabold mb-4 text-white">
-                LIANA
-              </h3>
-              <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <a href="#" class="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-white bg-white/10 hover:bg-white hover:text-black px-5 py-2.5 rounded-full transition duration-300">
-                  Play Clip
-                  <i data-lucide="play" class="w-3 h-3 fill-current"></i>
+                <a href="#contact" class="w-full sm:w-auto glass hover:bg-white/10 text-white px-8 py-4 rounded-full font-bold transition">
+                    View Pricing
                 </a>
-              </div>
             </div>
-          </div>
         </div>
+    </header>
 
-        <!-- Portfolio Item 3 -->
-        <div class="portfolio-card group relative rounded-2xl overflow-hidden border border-white/5 aspect-[4/5] bg-zinc-900">
-          <img
-            src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&q=80&w=1200"
-            class="w-full h-full object-cover filter brightness-[0.7] contrast-[1.05]" alt="High retention gaming storytelling">
-
-          <div class="portfolio-overlay absolute inset-0 flex flex-col justify-end p-8">
-            <div class="transform translate-y-4 group-hover:translate-y-0 transition duration-300">
-              <p class="text-rose-500 uppercase tracking-widest text-[10px] font-bold mb-2">
-                YouTube Short / Pacing-heavy
-              </p>
-              <h3 class="heading text-3xl font-extrabold mb-4 text-white">
-                SK PENJAHAT
-              </h3>
-              <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <a href="#" class="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-white bg-white/10 hover:bg-white hover:text-black px-5 py-2.5 rounded-full transition duration-300">
-                  Play Clip
-                  <i data-lucide="play" class="w-3 h-3 fill-current"></i>
-                </a>
-              </div>
+    <!-- WORK SECTION (Functional Filtering) -->
+    <section id="work" class="py-24 max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+            <div>
+                <h2 class="font-heading text-4xl md:text-6xl font-black mb-4 tracking-tighter">SELECTED WORKS</h2>
+                <p class="text-zinc-500 uppercase tracking-widest text-sm font-bold">Showcasing dynamic storytelling</p>
             </div>
-          </div>
+            
+            <!-- Filters -->
+            <div class="flex flex-wrap gap-2 p-1 bg-zinc-900/50 rounded-full border border-white/5">
+                <button @click="filter = 'all'" :class="filter === 'all' ? 'active-filter' : ''" class="px-6 py-2 rounded-full text-xs font-bold transition uppercase">All</button>
+                <button @click="filter = 'shorts'" :class="filter === 'shorts' ? 'active-filter' : ''" class="px-6 py-2 rounded-full text-xs font-bold transition uppercase text-zinc-400">Shorts</button>
+                <button @click="filter = 'youtube'" :class="filter === 'youtube' ? 'active-filter' : ''" class="px-6 py-2 rounded-full text-xs font-bold transition uppercase text-zinc-400">YouTube</button>
+                <button @click="filter = 'cinematic'" :class="filter === 'cinematic' ? 'active-filter' : ''" class="px-6 py-2 rounded-full text-xs font-bold transition uppercase text-zinc-400">Cinematic</button>
+            </div>
         </div>
 
-      </div>
-    </div>
-  </section>
+        <!-- Bento Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+            
+            <!-- Project 1 (Large) -->
+            <div x-show="filter === 'all' || filter === 'youtube'" class="md:col-span-8 group relative aspect-video md:aspect-auto md:h-[500px] overflow-hidden rounded-3xl cursor-pointer shadow-2xl"
+                 @click="modalOpen = true; activeVideo = 'YOUR_YOUTUBE_ID_HERE'">
+                <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&q=80&w=1600" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                <div class="absolute bottom-10 left-10">
+                    <span class="bg-blue-600 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Masterclass</span>
+                    <h3 class="font-heading text-4xl font-bold mt-2">ISA ISARB Documentary</h3>
+                </div>
+            </div>
 
-  <!-- SERVICES SECTION -->
-  <section id="services" class="py-24 border-t border-white/5 bg-zinc-950/20">
-    <div class="container-custom">
-      <div class="mb-16 text-center">
-        <p class="text-rose-500 uppercase tracking-[0.25em] text-xs font-bold mb-3">Capabilities</p>
-        <h2 class="heading text-3xl sm:text-4xl font-extrabold text-white">RETENTION ARCHITECTURE</h2>
-      </div>
+            <!-- Project 2 (Tall) -->
+            <div x-show="filter === 'all' || filter === 'shorts'" class="md:col-span-4 group relative aspect-[3/4] overflow-hidden rounded-3xl cursor-pointer"
+                 @click="modalOpen = true; activeVideo = 'YOUR_SHORTS_ID_HERE'">
+                <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700">
+                <div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition"></div>
+                <div class="absolute bottom-8 left-8">
+                    <h3 class="font-heading text-2xl font-bold">TikTok Retention Cut</h3>
+                </div>
+            </div>
 
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="card rounded-2xl p-8">
-          <div class="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center mb-6 text-rose-500">
-            <i data-lucide="scissors" class="w-5 h-5"></i>
-          </div>
-          <h3 class="heading text-xl font-bold mb-3">Micro-Pacing & Cuts</h3>
-          <p class="text-zinc-400 text-sm leading-relaxed">
-            Removing dead air instantly, leveraging strategic dynamic zooms, and matching visual accents on specific audio beats to protect modern watch times.
-          </p>
+            <!-- Project 3 -->
+            <div x-show="filter === 'all' || filter === 'cinematic'" class="md:col-span-6 group relative aspect-video overflow-hidden rounded-3xl cursor-pointer"
+                 @click="modalOpen = true; activeVideo = 'VIDEO_ID'">
+                <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+                <div class="absolute bottom-8 left-8 font-heading text-2xl font-bold">SK PENJAHAT Intro</div>
+            </div>
+
+            <!-- Project 4 -->
+            <div x-show="filter === 'all' || filter === 'shorts'" class="md:col-span-6 group relative aspect-video overflow-hidden rounded-3xl cursor-pointer"
+                 @click="modalOpen = true; activeVideo = 'VIDEO_ID'">
+                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+                <div class="absolute bottom-8 left-8 font-heading text-2xl font-bold">Instagram Reel Ad</div>
+            </div>
         </div>
+    </section>
 
-        <div class="card rounded-2xl p-8">
-          <div class="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center mb-6 text-rose-500">
-            <i data-lucide="sparkles" class="w-5 h-5"></i>
-          </div>
-          <h3 class="heading text-xl font-bold mb-3">Attention Soundscapes</h3>
-          <p class="text-zinc-400 text-sm leading-relaxed">
-            Premium auditory manipulation using custom foley rises, spatial audio sub-drops, and atmospheric design that guides viewer behavior unconsciously.
-          </p>
+    <!-- VIDEO MODAL (Functionality) -->
+    <template x-if="modalOpen">
+        <div class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/95 backdrop-blur-sm" @click.self="modalOpen = false">
+            <div class="relative w-full max-w-5xl aspect-video bg-zinc-900 rounded-2xl overflow-hidden shadow-2xl">
+                <button @click="modalOpen = false" class="absolute top-4 right-4 text-white z-10 bg-black/50 p-2 rounded-full">
+                    <i data-lucide="x"></i>
+                </button>
+                <!-- Replace with your actual video player or iframe -->
+                <div class="w-full h-full flex items-center justify-center">
+                   <p class="text-zinc-500">Video Embed Player Here (YouTube/Vimeo)</p>
+                </div>
+            </div>
         </div>
+    </template>
 
-        <div class="card rounded-2xl p-8">
-          <div class="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center mb-6 text-rose-500">
-            <i data-lucide="trending-up" class="w-5 h-5"></i>
-          </div>
-          <h3 class="heading text-xl font-bold mb-3">Dynamic Motion Design</h3>
-          <p class="text-zinc-400 text-sm leading-relaxed">
-            Clean, professional text animations, custom progress tracking elements, and screen-space optimization to capture eyes on sound-off autoplay environments.
-          </p>
+    <!-- CLIENT LOGOS -->
+    <section id="clients" class="py-20 border-y border-white/5 bg-zinc-900/20">
+        <div class="max-w-7xl mx-auto px-6 overflow-hidden">
+            <p class="text-center text-zinc-500 font-bold tracking-[0.3em] uppercase text-[10px] mb-12">Collaborations with Industry Leaders</p>
+            <div class="flex flex-wrap justify-center gap-12 md:gap-24 opacity-30 grayscale hover:grayscale-0 transition duration-500">
+                <span class="font-heading text-2xl md:text-4xl font-bold tracking-tighter">ISA ISARB</span>
+                <span class="font-heading text-2xl md:text-4xl font-bold tracking-tighter">NOREEN IMAN</span>
+                <span class="font-heading text-2xl md:text-4xl font-bold tracking-tighter">LIANA</span>
+                <span class="font-heading text-2xl md:text-4xl font-bold tracking-tighter">SK PENJAHAT</span>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CONTACT SECTION -->
-  <section id="contact" class="py-28 border-t border-white/5 relative overflow-hidden">
-    <div class="glow bottom-[-200px] left-[-100px]"></div>
+    <!-- CONTACT / CTA -->
+    <section id="contact" class="py-32 max-w-3xl mx-auto px-6 text-center">
+        <h2 class="font-heading text-5xl md:text-7xl font-black mb-8 tracking-tighter">LET'S START <br>THE CUT.</h2>
+        <p class="text-zinc-400 text-lg mb-12">Currently booking for next month. Secure your spot now to elevate your content quality.</p>
+        
+        <div class="flex flex-col gap-4">
+            <a href="mailto:hello@syfqfee.com" class="text-2xl md:text-4xl font-heading font-bold hover:text-blue-500 transition break-all">
+                hello@syfqfee.com
+            </a>
+            <div class="flex justify-center gap-6 mt-8">
+                <a href="#" class="glass p-4 rounded-full hover:bg-white/10 transition"><i data-lucide="instagram"></i></a>
+                <a href="#" class="glass p-4 rounded-full hover:bg-white/10 transition"><i data-lucide="youtube"></i></a>
+                <a href="#" class="glass p-4 rounded-full hover:bg-white/10 transition"><i data-lucide="twitter"></i></a>
+            </div>
+        </div>
+    </section>
 
-    <div class="container-custom text-center relative z-10">
-      <p class="text-rose-500 uppercase tracking-[0.25em] text-xs font-bold mb-4">
-        Ready to scale?
-      </p>
+    <footer class="py-10 border-t border-white/5 text-center text-zinc-600 text-xs font-medium uppercase tracking-widest">
+        &copy; 2025 SYFQFEE Studio — All Rights Reserved
+    </footer>
 
-      <h2 class="heading text-4xl sm:text-6xl md:text-7xl font-black mb-8 leading-none">
-        LET'S CREATE <br class="hidden sm:block">
-        SOMETHING <span class="accent-gradient">VALUABLE.</span>
-      </h2>
-
-      <p class="max-w-xl mx-auto text-zinc-400 text-base md:text-lg leading-relaxed mb-12">
-        Let's engineer highly persuasive visual retention assets for your social networks. Reach out directly below to arrange bookings.
-      </p>
-
-      <div class="flex flex-col items-center gap-4 mb-16">
-        <a href="mailto:your@email.com"
-          class="text-xl sm:text-3xl font-bold hover:text-rose-500 transition duration-300 border-b border-white/5 hover:border-rose-500/50 pb-2">
-          your@email.com
-        </a>
-        <a href="tel:+60123456789"
-          class="text-zinc-500 text-sm sm:text-base hover:text-white transition duration-300">
-          +60 12-345 6789
-        </a>
-      </div>
-
-      <!-- Socials -->
-      <div class="flex justify-center gap-4">
-        <a href="#"
-          class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-rose-500/10 hover:border-rose-500 hover:text-rose-500 transition duration-300 text-zinc-400">
-          <i data-lucide="instagram" class="w-5 h-5"></i>
-        </a>
-        <a href="#"
-          class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-rose-500/10 hover:border-rose-500 hover:text-rose-500 transition duration-300 text-zinc-400">
-          <i data-lucide="youtube" class="w-5 h-5"></i>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="border-t border-white/5 py-8 bg-zinc-950">
-    <div class="container-custom flex flex-col md:flex-row items-center justify-between gap-4">
-      <p class="text-zinc-600 text-xs">
-        © 2026 SYFQFEE. All rights reserved.
-      </p>
-      <p class="text-zinc-700 text-xs font-mono">
-        Optimized for premium visual production.
-      </p>
-    </div>
-  </footer>
-
-  <!-- SCRIPTS -->
-  <script>
-    // Initialize Lucide Icons
-    lucide.createIcons();
-
-    // Responsive Sticky Navbar Easing
-    const navbar = document.getElementById("navbar");
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 40) {
-        navbar.classList.add("glass-nav");
-        navbar.classList.remove("py-5");
-        navbar.classList.add("py-3");
-      } else {
-        navbar.classList.remove("glass-nav");
-        navbar.classList.add("py-5");
-        navbar.classList.remove("py-3");
-      }
-    });
-  </script>
-
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
