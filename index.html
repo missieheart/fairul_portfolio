@@ -3,40 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fairul Shafiq | Professional Editor</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+    <title>Fairul Shafiq | Video Editing Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-deep: #050b1a;
-            --accent-glow: #00d2ff;
-            --card-dark: rgba(15, 22, 42, 0.9);
+            --bg-deep: #020617;
+            --accent-cyan: #00d2ff;
+            --accent-purple: #9333ea;
+            --gold: #d4af37;
             --text-white: #f8fafc;
             --text-dim: #94a3b8;
-            --gold: #d4af37;
+            --glass: rgba(15, 23, 42, 0.8);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        * { box-sizing: border-box; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
+        * { box-sizing: border-box; transition: var(--transition); scroll-behavior: smooth; }
 
         body {
             margin: 0;
             background-color: var(--bg-deep);
-            /* Glowing Mesh Background Effect */
             background-image: 
-                radial-gradient(at 0% 0%, rgba(0, 210, 255, 0.15) 0px, transparent 50%),
-                radial-gradient(at 100% 0%, rgba(147, 51, 234, 0.1) 0px, transparent 50%),
-                radial-gradient(at 50% 100%, rgba(212, 175, 55, 0.05) 0px, transparent 50%);
+                radial-gradient(at 0% 0%, rgba(0, 210, 255, 0.12) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(147, 51, 234, 0.08) 0px, transparent 50%);
             background-attachment: fixed;
             font-family: 'Inter', sans-serif;
             color: var(--text-white);
-            line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* --- GLOWING HEADER --- */
-        .hero {
-            padding: 100px 20px;
+        /* --- RESPONSIVE GLOWING LOGO --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-box {
+            background: linear-gradient(45deg, var(--accent-cyan), var(--accent-purple));
+            color: white;
+            padding: 5px 8px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            box-shadow: 0 0 15px var(--accent-cyan);
+        }
+
+        /* --- HERO SECTION --- */
+        header {
+            padding: 150px 20px 80px 20px;
             text-align: center;
-            position: relative;
         }
 
         .profile-wrapper {
@@ -46,47 +80,48 @@
         }
 
         .profile-img {
-            width: 140px;
-            height: 140px;
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
             border: 3px solid rgba(255,255,255,0.1);
             object-fit: cover;
-            position: relative;
             z-index: 2;
+            position: relative;
         }
 
-        .profile-wrapper::before {
+        .profile-wrapper::after {
             content: '';
             position: absolute;
-            top: -10px; left: -10px; right: -10px; bottom: -10px;
-            background: linear-gradient(45deg, var(--accent-glow), #9333ea, var(--gold));
+            inset: -8px;
+            background: linear-gradient(45deg, var(--accent-cyan), var(--accent-purple), var(--gold));
             border-radius: 50%;
-            filter: blur(15px);
-            opacity: 0.6;
-            animation: rotate 10s linear infinite;
+            filter: blur(12px);
+            opacity: 0.5;
+            animation: pulse 4s infinite alternate;
         }
 
-        @keyframes rotate { 100% { filter: hue-rotate(360deg); } }
+        @keyframes pulse { to { opacity: 0.8; transform: scale(1.05); } }
 
-        h1 { font-size: 3rem; margin: 0; font-weight: 700; letter-spacing: -1px; }
-        .tagline { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--text-dim); margin: 15px 0; font-style: italic; }
+        h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin: 0; font-weight: 800; }
+        .tagline { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--text-dim); margin-top: 10px; font-style: italic; }
 
-        /* --- CONTENT CONTAINER (EDITORIAL STYLE) --- */
-        .content-container {
+        /* --- MAIN CONTAINER --- */
+        .main-card {
             max-width: 1100px;
             margin: 0 auto 100px auto;
-            background: var(--card-dark);
+            background: var(--glass);
             backdrop-filter: blur(20px);
+            border-radius: 16px;
             border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 20px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 40px 100px rgba(0,0,0,0.5);
             overflow: hidden;
         }
 
-        /* --- TABS & HOVERS --- */
+        /* --- NAVIGATION TABS --- */
         .tab-bar {
             display: flex;
             justify-content: space-between;
+            align-items: center;
             padding: 0 40px;
             background: rgba(255,255,255,0.02);
             border-bottom: 1px solid rgba(255,255,255,0.05);
@@ -98,218 +133,244 @@
             font-weight: 600;
             color: var(--text-dim);
             text-decoration: none;
-            position: relative;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 1px;
+            position: relative;
         }
 
-        .tab:hover { color: var(--text-white); }
-        .tab.active { color: var(--accent-glow); }
+        .tab:hover, .tab.active { color: white; }
         .tab.active::after {
             content: '';
             position: absolute;
             bottom: -1px; left: 0; width: 100%; height: 3px;
-            background: var(--accent-glow);
-            box-shadow: 0 0 15px var(--accent-glow);
+            background: var(--accent-cyan);
+            box-shadow: 0 0 15px var(--accent-cyan);
         }
 
-        /* --- ENHANCED VIDEO CARDS --- */
+        .hire-btn {
+            background: linear-gradient(45deg, var(--accent-cyan), var(--accent-purple));
+            color: white;
+            padding: 10px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(0, 210, 255, 0.3);
+        }
+
+        .hire-btn:hover { transform: scale(1.05); box-shadow: 0 5px 25px rgba(0, 210, 255, 0.5); }
+
+        /* --- VIDEO PORTFOLIO GRID --- */
         .video-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            padding: 50px;
+            gap: 40px;
+            padding: 50px 40px;
         }
 
-        .video-card {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            border-radius: 12px;
-        }
-
-        .thumb-wrap {
+        .video-card { text-decoration: none; color: inherit; display: block; }
+        
+        .video-card .thumb-wrap {
             position: relative;
             border-radius: 12px;
             overflow: hidden;
             margin-bottom: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            background: #000;
         }
 
-        .thumb-wrap img { width: 100%; aspect-ratio: 16/9; object-fit: cover; filter: brightness(0.8); }
+        .thumb-wrap img { width: 100%; aspect-ratio: 16/9; object-fit: cover; opacity: 0.7; filter: grayscale(50%); }
+        
+        .video-card:hover { transform: translateY(-8px); }
+        .video-card:hover img { opacity: 1; filter: grayscale(0%) scale(1.05); }
+        .video-card:hover .thumb-wrap { box-shadow: 0 0 30px rgba(0, 210, 255, 0.2); }
 
-        /* Hover Effect: The "Glow Lift" */
-        .video-card:hover { transform: translateY(-10px); }
-        .video-card:hover .thumb-wrap { box-shadow: 0 0 30px rgba(0, 210, 255, 0.3); }
-        .video-card:hover img { filter: brightness(1.1) scale(1.05); }
+        .video-title { font-size: 1.4rem; font-weight: 700; margin: 0 0 10px 0; line-height: 1.3; }
+        .video-card:hover .video-title { color: var(--accent-cyan); }
 
-        .video-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            line-height: 1.3;
-            margin: 0 0 12px 0;
-        }
-        .video-card:hover .video-title { color: var(--accent-glow); text-shadow: 0 0 10px rgba(0,210,255,0.4); }
-
-        .meta { display: flex; gap: 20px; font-size: 0.8rem; color: var(--text-dim); }
-        .meta i { color: var(--accent-glow); }
+        .meta { display: flex; gap: 15px; font-size: 0.8rem; color: var(--text-dim); font-weight: 500; }
+        .meta i { color: var(--accent-cyan); }
 
         /* --- PRICING SECTION --- */
-        .pricing-section {
-            padding: 80px 50px;
+        #pricing {
+            padding: 60px 40px;
             background: rgba(0,0,0,0.2);
             text-align: center;
         }
 
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        .pricing-row {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .price-chip {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .price-chip:hover { border-color: var(--accent-cyan); background: rgba(0, 210, 255, 0.05); }
+
+        .price-chip.best { border-color: var(--gold); color: var(--gold); background: rgba(212, 175, 55, 0.05); }
+
+        /* --- CONTACT FOOTER --- */
+        #contact {
+            padding: 80px 40px;
+            text-align: center;
+            background: rgba(0,0,0,0.4);
+        }
+
+        .social-grid {
+            display: flex;
+            justify-content: center;
             gap: 20px;
+            flex-wrap: wrap;
             margin-top: 40px;
         }
 
-        .price-item {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.05);
-            padding: 30px 20px;
-            border-radius: 12px;
-        }
-
-        .price-item:hover { 
-            background: rgba(0, 210, 255, 0.05);
-            border-color: var(--accent-glow);
-            transform: scale(1.05);
-        }
-
-        .price-item.featured { 
-            border: 1px solid var(--gold); 
-            background: rgba(212, 175, 55, 0.05); 
-            position: relative;
-        }
-        .featured::before {
-            content: 'BEST DEAL';
-            position: absolute;
-            top: -12px; left: 50%; transform: translateX(-50%);
-            background: var(--gold); color: black;
-            font-size: 0.6rem; font-weight: 900; padding: 4px 10px; border-radius: 4px;
-        }
-
-        /* --- CLICKABLE CONTACTS --- */
-        .contact-bar {
+        .social-link {
             display: flex;
-            justify-content: center;
-            gap: 30px;
-            padding: 40px;
-            background: rgba(0,0,0,0.3);
-        }
-
-        .contact-btn {
-            color: var(--text-dim);
-            font-size: 1.5rem;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255,255,255,0.05);
+            padding: 15px 30px;
+            border-radius: 50px;
             text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255,255,255,0.05);
         }
 
-        .contact-btn:hover { color: var(--text-white); transform: scale(1.3); filter: drop-shadow(0 0 10px var(--accent-glow)); }
+        .social-link i { font-size: 1.4rem; }
 
-        @media (max-width: 850px) {
+        /* Specific Brand Colors on Hover */
+        .whatsapp:hover { background: #25d366; border-color: #25d366; box-shadow: 0 0 20px rgba(37, 211, 102, 0.4); color: white; }
+        .instagram:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); border-color: transparent; box-shadow: 0 0 20px rgba(204, 35, 102, 0.4); color: white; }
+        .email:hover { background: var(--accent-cyan); border-color: var(--accent-cyan); color: #020617; box-shadow: 0 0 20px rgba(0, 210, 255, 0.4); }
+
+        @media (max-width: 800px) {
             .video-grid { grid-template-columns: 1fr; }
+            .tab-bar { padding: 15px 20px; flex-direction: column; gap: 15px; }
             .tabs { gap: 20px; }
-            h1 { font-size: 2.2rem; }
+            .logo { font-size: 1rem; }
         }
     </style>
 </head>
 <body>
 
-    <header class="hero">
+    <!-- Responsive Navbar with Logo -->
+    <nav class="navbar">
+        <a href="#" class="logo">
+            <div class="logo-box">FS</div> FAIRUL SHAFIQ
+        </a>
+        <div style="display: flex; gap: 15px;">
+            <a href="https://threads.net/@feedstudi0" target="_blank" style="color: white;"><i class="fa-brands fa-threads"></i></a>
+            <a href="https://instagram.com/syfq.fee" target="_blank" style="color: white;"><i class="fab fa-instagram"></i></a>
+        </div>
+    </nav>
+
+    <header>
         <div class="profile-wrapper">
             <img src="your-photo.jpg" class="profile-img" onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=Fairul'">
         </div>
         <h1>Muhammad Fairul Shafiq</h1>
-        <p class="tagline">Crafting viral narratives for the world's top creators.</p>
-        
-        <div style="margin-top: 25px;">
-            <a href="mailto:afairul99@gmail.com" style="color: var(--accent-glow); text-decoration: none; font-weight: 600; border-bottom: 1px solid;">afairul99@gmail.com</a>
-        </div>
+        <p class="tagline">Editorial Video Editor & Cinematic Storyteller</p>
+        <p style="color: var(--text-dim); margin-top: 10px; font-size: 0.9rem;">Expertly crafting viral narratives with 5 years of industry experience.</p>
     </header>
 
-    <div class="content-container">
-        <!-- Editorial Navigation -->
+    <div class="main-card">
+        <!-- Editorial Navigation Bar -->
         <div class="tab-bar">
             <div class="tabs">
-                <a href="#work" class="tab active">Featured Work</a>
-                <a href="#pricing" class="tab">Service Rates</a>
-                <a href="https://www.behance.net/gallery/206585543/Activity-Timeline-Editting" class="tab" target="_blank">Behance</a>
+                <a href="#work" class="tab active">Selected Work</a>
+                <a href="#pricing" class="tab">Pricing</a>
+                <a href="https://www.behance.net/gallery/206585543/Activity-Timeline-Editting" target="_blank" class="tab">Timeline</a>
             </div>
-            <div class="tabs" style="display: flex; align-items: center;">
-                <a href="tel:0128376159" style="color: var(--accent-glow); font-size: 0.8rem; text-decoration: none; font-weight: 700;">HIRE ME</a>
-            </div>
+            <a href="#contact" class="hire-btn">HIRE ME</a>
         </div>
 
-        <!-- Video Portfolio Grid -->
+        <!-- Professional Video Grid -->
         <div id="work" class="video-grid">
             
             <a href="https://youtube.com/shorts/7oeKaDSfB1A" class="video-card" target="_blank">
                 <div class="thumb-wrap"><img src="noreen.png"></div>
-                <h3 class="video-title">The Art of Retention: Cinematic Storytelling with Noreen Iman</h3>
+                <h3 class="video-title">The Master of Retention: Featured Collaboration with Noreen Iman</h3>
                 <div class="meta">
-                    <span><i class="fas fa-play-circle"></i> Short Form</span>
-                    <span><i class="far fa-clock"></i> 2024</span>
+                    <span><i class="far fa-calendar"></i> 2024</span>
+                    <span><i class="fas fa-video"></i> Vertical Cinema</span>
                 </div>
             </a>
 
             <a href="https://youtube.com/shorts/6FFYQN3xC0k" class="video-card" target="_blank">
                 <div class="thumb-wrap"><img src="isa.jpeg"></div>
-                <h3 class="video-title">High-Octane Entertainment: Action-Packed Edit for Isa ISARB</h3>
+                <h3 class="video-title">High-Octane Dynamics: Edit for Isa ISARB Entertainment</h3>
                 <div class="meta">
-                    <span><i class="fas fa-bolt"></i> High Retention</span>
-                    <span><i class="far fa-clock"></i> 2024</span>
+                    <span><i class="far fa-calendar"></i> 2024</span>
+                    <span><i class="fas fa-bolt"></i> Fast-Paced Cut</span>
                 </div>
             </a>
 
             <a href="https://youtube.com/shorts/7it8e3b80kk" class="video-card" target="_blank">
                 <div class="thumb-wrap"><img src="liana.jpeg"></div>
-                <h3 class="video-title">Minimalist Aesthetic & Color Precision Series: Liana Vol. 1</h3>
+                <h3 class="video-title">Aesthetic Precision & Advanced Grading: Liana Collection</h3>
                 <div class="meta">
-                    <span><i class="fas fa-palette"></i> Color Grade</span>
-                    <span><i class="far fa-clock"></i> 2024</span>
+                    <span><i class="far fa-calendar"></i> 2024</span>
+                    <span><i class="fas fa-palette"></i> Color Specialist</span>
                 </div>
             </a>
 
             <a href="https://youtube.com/shorts/WclkfoAsEDk" class="video-card" target="_blank">
                 <div class="thumb-wrap"><img src="sk_penjahat.jpeg"></div>
-                <h3 class="video-title">Dynamic Sound Design & VFX Integration for SK_penjahat</h3>
+                <h3 class="video-title">Sound Design & Visual Flow: Featured Project for SK_penjahat</h3>
                 <div class="meta">
-                    <span><i class="fas fa-volume-up"></i> Sound FX</span>
-                    <span><i class="far fa-clock"></i> 2024</span>
+                    <span><i class="far fa-calendar"></i> 2024</span>
+                    <span><i class="fas fa-volume-up"></i> SFX Master</span>
                 </div>
             </a>
 
         </div>
 
-        <!-- Pricing (Editorial List Style) -->
-        <div id="pricing" class="pricing-section">
-            <h2 style="font-size: 2rem; margin-bottom: 10px;">Production Packages</h2>
-            <p style="color: var(--text-dim);">Premium editing services optimized for YouTube, Reels, and TikTok.</p>
-            
-            <div class="pricing-grid">
-                <div class="price-item">1 Video<br><b style="color:var(--accent-glow)">RM60</b></div>
-                <div class="price-item">5 Videos<br><b style="color:var(--accent-glow)">RM250</b></div>
-                <div class="price-item">10 Videos<br><b style="color:var(--accent-glow)">RM450</b></div>
-                <div class="price-item">15 Videos<br><b style="color:var(--accent-glow)">RM600</b></div>
-                <div class="price-item featured">20 Videos<br><b style="color:var(--gold)">RM700</b></div>
+        <!-- Pricing Bar -->
+        <div id="pricing">
+            <h2 style="font-size: 1.8rem; letter-spacing: -1px;">Production Rates</h2>
+            <div class="pricing-row">
+                <div class="price-chip">1 Video - RM60</div>
+                <div class="price-chip">5 Videos - RM250</div>
+                <div class="price-chip">10 Videos - RM450</div>
+                <div class="price-chip best">20 Videos - RM700 (Best Value)</div>
             </div>
-            
-            <p style="font-size: 0.7rem; color: #555; margin-top: 40px; letter-spacing: 1px;">FULL PAYMENT REQUIRED UPFRONT FOR PACKAGES</p>
+            <p style="font-size: 0.7rem; color: #444; margin-top: 30px; letter-spacing: 2px;">FULL PAYMENT REQUIRED FOR BUNDLE RATES</p>
         </div>
 
-        <!-- Sticky Footer Contacts -->
-        <div class="contact-bar">
-            <a href="https://wa.me/60128376159" class="contact-btn"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://instagram.com/syfq.fee" class="contact-btn"><i class="fab fa-instagram"></i></a>
-            <a href="mailto:afairul99@gmail.com" class="contact-btn"><i class="far fa-envelope"></i></a>
-            <a href="tel:0128376159" class="contact-btn"><i class="fas fa-phone"></i></a>
-        </div>
+        <!-- Clickable Contact Section -->
+        <footer id="contact">
+            <h2 style="font-size: 2rem; margin-bottom: 10px;">Let's Create Together</h2>
+            <p style="color: var(--text-dim);">Now accepting new projects for Q3/Q4 2024.</p>
+
+            <div class="social-grid">
+                <a href="https://wa.me/60128376159" class="social-link whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i> WhatsApp Me
+                </a>
+                
+                <a href="https://instagram.com/syfq.fee" class="social-link instagram" target="_blank">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+
+                <a href="mailto:afairul99@gmail.com" class="social-link email">
+                    <i class="far fa-envelope"></i> Email Inquiry
+                </a>
+            </div>
+
+            <p style="margin-top: 80px; opacity: 0.2; font-size: 0.6rem; letter-spacing: 4px;">© 2024 FS EDITING STUDIO | KUALA LUMPUR</p>
+        </footer>
     </div>
 
 </body>
