@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SYFQFEE — My Video Editor Portfolio</title>
+
+  <title>SYFQFEE — Video Editor Portfolio</title>
 
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Lucide Icons -->
+  <!-- Lucide -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <!-- Fonts -->
@@ -18,6 +19,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 
   <style>
+
     :root{
       --bg:#050505;
       --card:#0d0d0d;
@@ -84,6 +86,7 @@
         rgba(255,255,255,0.03),
         rgba(255,255,255,0.01)
       );
+
       border:1px solid var(--border);
       transition:0.4s ease;
     }
@@ -145,6 +148,22 @@
       color:black;
     }
 
+    @keyframes float{
+      0%{
+        transform:translateY(0px);
+      }
+      50%{
+        transform:translateY(-12px);
+      }
+      100%{
+        transform:translateY(0px);
+      }
+    }
+
+    .floating{
+      animation:float 5s ease-in-out infinite;
+    }
+
     ::-webkit-scrollbar{
       width:8px;
     }
@@ -157,19 +176,30 @@
       background:#ff2b2b;
       border-radius:999px;
     }
+
   </style>
+
 </head>
 
 <body>
 
+  <!-- NOISE -->
+  <div class="fixed inset-0 pointer-events-none opacity-[0.03]"
+    style="background-image:url('https://grainy-gradients.vercel.app/noise.svg');">
+  </div>
+
   <!-- NAVBAR -->
   <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+
     <div class="container-custom py-6 flex items-center justify-between">
 
+      <!-- LOGO -->
       <div class="heading text-2xl md:text-3xl font-extrabold tracking-tight">
         SYFQ<span class="text-red-500">FEE</span>
+        <span class="text-white/30">.</span>
       </div>
 
+      <!-- MENU -->
       <div class="hidden md:flex items-center gap-10 text-sm font-semibold text-gray-300">
 
         <a href="#work" class="hover:text-white transition">
@@ -186,12 +216,15 @@
 
         <a href="#contact"
           class="bg-white text-black px-6 py-3 rounded-full hover:bg-red-500 hover:text-white transition font-bold">
+
           Let's Talk
+
         </a>
 
       </div>
 
     </div>
+
   </nav>
 
   <!-- HERO -->
@@ -205,35 +238,50 @@
       <div>
 
         <div class="inline-flex items-center gap-3 glass px-5 py-3 rounded-full mb-8">
+
           <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
 
           <span class="text-xs uppercase tracking-[0.25em] text-gray-300 font-semibold">
             Available For Projects
           </span>
+
         </div>
 
-        <h1 class="heading text-[4rem] md:text-[7rem] leading-[0.9] font-extrabold mb-8">
-          HIGH <br>
-          <span class="red-gradient">RETENTION</span> <br>
-          VIDEO EDITS
+        <!-- TITLE -->
+        <h1 class="heading text-[4.5rem] md:text-[8rem] leading-[0.85] font-extrabold mb-8">
+
+          EDITS <br>
+
+          THAT <span class="red-gradient">HOLD</span> <br>
+
+          ATTENTION
+
         </h1>
 
         <p class="text-gray-400 text-lg leading-relaxed max-w-xl mb-10">
-          I help creators build cinematic, fast-paced content engineered for retention,
-          engagement, and viral performance across TikTok, YouTube Shorts, and Reels.
+
+          I create cinematic, fast-paced edits engineered for retention,
+          storytelling, engagement, and viral short-form performance.
+
         </p>
 
+        <!-- BUTTONS -->
         <div class="flex flex-wrap gap-5">
 
           <a href="#work"
             class="btn-primary px-8 py-4 rounded-full text-sm uppercase tracking-[0.2em] font-bold flex items-center gap-3">
+
             View Portfolio
+
             <i data-lucide="arrow-right" class="w-4 h-4"></i>
+
           </a>
 
           <a href="#contact"
             class="btn-secondary px-8 py-4 rounded-full text-sm uppercase tracking-[0.2em] font-bold">
+
             Contact Me
+
           </a>
 
         </div>
@@ -242,18 +290,39 @@
         <div class="grid grid-cols-3 gap-8 mt-16">
 
           <div>
-            <h3 class="heading text-4xl font-bold text-white">50+</h3>
-            <p class="text-gray-500 text-sm mt-2">Projects Edited</p>
+
+            <h3 class="heading text-4xl font-bold text-white">
+              50+
+            </h3>
+
+            <p class="text-gray-500 text-sm mt-2">
+              Projects Edited
+            </p>
+
           </div>
 
           <div>
-            <h3 class="heading text-4xl font-bold text-white">10M+</h3>
-            <p class="text-gray-500 text-sm mt-2">Views Generated</p>
+
+            <h3 class="heading text-4xl font-bold text-white">
+              10M+
+            </h3>
+
+            <p class="text-gray-500 text-sm mt-2">
+              Views Generated
+            </p>
+
           </div>
 
           <div>
-            <h3 class="heading text-4xl font-bold text-white">4+</h3>
-            <p class="text-gray-500 text-sm mt-2">Top Creators</p>
+
+            <h3 class="heading text-4xl font-bold text-white">
+              4+
+            </h3>
+
+            <p class="text-gray-500 text-sm mt-2">
+              Top Creators
+            </p>
+
           </div>
 
         </div>
@@ -263,16 +332,71 @@
       <!-- RIGHT -->
       <div class="relative">
 
-        <div class="absolute inset-0 bg-red-500/20 blur-[120px] rounded-full"></div>
+        <div class="absolute inset-0 bg-red-500/20 blur-[140px] rounded-full"></div>
 
-        <div class="relative rounded-[40px] overflow-hidden border border-white/10">
+        <!-- MAIN CARD -->
+        <div class="relative rounded-[40px] overflow-hidden border border-white/10 bg-[#0a0a0a] h-[750px] flex items-center justify-center">
 
-          <img
-            src="fairul.jpeg"
-            alt="Fairul Shafiq"
-            class="w-full h-[750px] object-cover"
-            onerror="this.src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=1200'"
-          >
+          <!-- GRID -->
+          <div class="absolute inset-0 opacity-20"
+            style="
+              background-image:
+              linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+              background-size:40px 40px;
+            ">
+          </div>
+
+          <!-- RED GLOW -->
+          <div class="absolute w-[400px] h-[400px] bg-red-500/20 blur-[120px] rounded-full animate-pulse"></div>
+
+          <!-- CONTENT -->
+          <div class="relative z-10 text-center px-10">
+
+            <div class="w-28 h-28 mx-auto mb-8 rounded-full border border-white/10 bg-black flex items-center justify-center floating">
+
+              <i data-lucide="clapperboard" class="w-12 h-12 text-red-500"></i>
+
+            </div>
+
+            <p class="uppercase tracking-[0.4em] text-red-500 text-xs font-bold mb-6">
+              Anonymous Editor
+            </p>
+
+            <h2 class="heading text-5xl md:text-7xl leading-none mb-8">
+
+              THE EDITOR <br>
+
+              BEHIND THE <span class="red-gradient">VIRAL CUTS</span>
+
+            </h2>
+
+            <p class="text-gray-400 max-w-md mx-auto leading-relaxed text-lg">
+
+              I let the edits speak louder than the face.
+              Cinematic storytelling engineered for retention,
+              emotion, and high-performing content.
+
+            </p>
+
+            <!-- TAGS -->
+            <div class="flex flex-wrap justify-center gap-4 mt-12">
+
+              <div class="glass px-5 py-3 rounded-full text-sm text-gray-300">
+                TikTok Editing
+              </div>
+
+              <div class="glass px-5 py-3 rounded-full text-sm text-gray-300">
+                YouTube Shorts
+              </div>
+
+              <div class="glass px-5 py-3 rounded-full text-sm text-gray-300">
+                Viral Retention
+              </div>
+
+            </div>
+
+          </div>
 
         </div>
 
@@ -290,31 +414,38 @@
       <div class="flex items-end justify-between mb-16 flex-wrap gap-6">
 
         <div>
+
           <p class="text-red-500 uppercase tracking-[0.25em] text-xs font-bold mb-4">
             Trusted By
           </p>
 
           <h2 class="heading text-5xl md:text-7xl leading-none">
+
             TOP <span class="gradient-text">CREATORS</span>
+
           </h2>
+
         </div>
 
         <p class="max-w-md text-gray-500 leading-relaxed">
+
           Collaborating with creators and influencers who prioritize storytelling,
           retention, and premium content quality.
+
         </p>
 
       </div>
 
+      <!-- CLIENT GRID -->
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
 
         <!-- CARD -->
         <div class="card rounded-[30px] p-5">
 
           <div class="rounded-[24px] overflow-hidden aspect-square mb-6">
-            <img src="isa.jpeg"
-              class="w-full h-full object-cover"
-              onerror="this.src='https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=1200'">
+
+            <img src="isa.jpeg" class="w-full h-full object-cover">
+
           </div>
 
           <h3 class="heading text-3xl mb-2">
@@ -325,22 +456,15 @@
             Retention Editing
           </p>
 
-          <a href="https://youtube.com/shorts/JzoY379-hfs?feature=share"
-            target="_blank"
-            class="flex items-center gap-2 text-red-500 font-semibold hover:gap-4 transition-all">
-            Watch Edit
-            <i data-lucide="arrow-right" class="w-4 h-4"></i>
-          </a>
-
         </div>
 
         <!-- CARD -->
         <div class="card rounded-[30px] p-5">
 
           <div class="rounded-[24px] overflow-hidden aspect-square mb-6">
-            <img src="noreen.png"
-              class="w-full h-full object-cover"
-              onerror="this.src='https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&q=80&w=1200'">
+
+            <img src="noreen.png" class="w-full h-full object-cover">
+
           </div>
 
           <h3 class="heading text-3xl mb-2">
@@ -351,22 +475,15 @@
             Lifestyle Shorts
           </p>
 
-          <a href="https://youtube.com/shorts/7oeKaDSfB1A?feature=share"
-            target="_blank"
-            class="flex items-center gap-2 text-red-500 font-semibold hover:gap-4 transition-all">
-            Watch Edit
-            <i data-lucide="arrow-right" class="w-4 h-4"></i>
-          </a>
-
         </div>
 
         <!-- CARD -->
         <div class="card rounded-[30px] p-5">
 
           <div class="rounded-[24px] overflow-hidden aspect-square mb-6">
-            <img src="liana.jpeg"
-              class="w-full h-full object-cover"
-              onerror="this.src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=1200'">
+
+            <img src="liana.jpeg" class="w-full h-full object-cover">
+
           </div>
 
           <h3 class="heading text-3xl mb-2">
@@ -377,22 +494,15 @@
             TikTok Content
           </p>
 
-          <a href="https://youtube.com/shorts/SxUgiwLsrAs?feature=share"
-            target="_blank"
-            class="flex items-center gap-2 text-red-500 font-semibold hover:gap-4 transition-all">
-            Watch Edit
-            <i data-lucide="arrow-right" class="w-4 h-4"></i>
-          </a>
-
         </div>
 
         <!-- CARD -->
         <div class="card rounded-[30px] p-5">
 
           <div class="rounded-[24px] overflow-hidden aspect-square mb-6">
-            <img src="sk_penjahat.jpeg"
-              class="w-full h-full object-cover"
-              onerror="this.src='https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=1200'">
+
+            <img src="sk_penjahat.jpeg" class="w-full h-full object-cover">
+
           </div>
 
           <h3 class="heading text-3xl mb-2">
@@ -402,128 +512,6 @@
           <p class="text-gray-500 text-sm mb-6">
             Gaming Storytelling
           </p>
-
-          <a href="https://youtube.com/shorts/WclkfoAsEDk?feature=share"
-            target="_blank"
-            class="flex items-center gap-2 text-red-500 font-semibold hover:gap-4 transition-all">
-            Watch Edit
-            <i data-lucide="arrow-right" class="w-4 h-4"></i>
-          </a>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- PORTFOLIO -->
-  <section id="work" class="py-28">
-
-    <div class="container-custom">
-
-      <div class="text-center mb-20">
-
-        <p class="text-red-500 uppercase tracking-[0.25em] text-xs font-bold mb-5">
-          Portfolio
-        </p>
-
-        <h2 class="heading text-5xl md:text-7xl">
-          SELECTED WORK
-        </h2>
-
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-        <!-- ITEM -->
-        <div class="portfolio-card relative overflow-hidden rounded-[32px] border border-white/10 h-[700px]">
-
-          <img
-            src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=1200"
-            class="w-full h-full object-cover"
-          >
-
-          <div class="absolute inset-0 bg-black/70"></div>
-
-          <div class="portfolio-overlay absolute inset-0 flex flex-col items-center justify-center text-center p-10">
-
-            <span class="text-red-500 uppercase tracking-[0.3em] text-xs font-bold mb-4">
-              ISA ISARB
-            </span>
-
-            <h3 class="heading text-5xl mb-8">
-              Viral Retention Edit
-            </h3>
-
-            <a href="https://youtube.com/shorts/6FFYQN3xC0k?feature=share"
-              target="_blank"
-              class="bg-white text-black px-8 py-4 rounded-full font-bold hover:bg-red-500 hover:text-white transition">
-              Watch Video
-            </a>
-
-          </div>
-
-        </div>
-
-        <!-- ITEM -->
-        <div class="portfolio-card relative overflow-hidden rounded-[32px] border border-white/10 h-[700px]">
-
-          <img
-            src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=1200"
-            class="w-full h-full object-cover"
-          >
-
-          <div class="absolute inset-0 bg-black/70"></div>
-
-          <div class="portfolio-overlay absolute inset-0 flex flex-col items-center justify-center text-center p-10">
-
-            <span class="text-red-500 uppercase tracking-[0.3em] text-xs font-bold mb-4">
-              LIANA
-            </span>
-
-            <h3 class="heading text-5xl mb-8">
-              Trending TikTok Edit
-            </h3>
-
-            <a href="https://youtube.com/shorts/7it8e3b80kk?feature=share"
-              target="_blank"
-              class="bg-white text-black px-8 py-4 rounded-full font-bold hover:bg-red-500 hover:text-white transition">
-              Watch Video
-            </a>
-
-          </div>
-
-        </div>
-
-        <!-- ITEM -->
-        <div class="portfolio-card relative overflow-hidden rounded-[32px] border border-white/10 h-[700px]">
-
-          <img
-            src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&q=80&w=1200"
-            class="w-full h-full object-cover"
-          >
-
-          <div class="absolute inset-0 bg-black/70"></div>
-
-          <div class="portfolio-overlay absolute inset-0 flex flex-col items-center justify-center text-center p-10">
-
-            <span class="text-red-500 uppercase tracking-[0.3em] text-xs font-bold mb-4">
-              CREATIVE EDIT
-            </span>
-
-            <h3 class="heading text-5xl mb-8">
-              Cinematic Storytelling
-            </h3>
-
-            <a href="https://youtube.com/shorts/ybEMMZQwzQE?feature=share"
-              target="_blank"
-              class="bg-white text-black px-8 py-4 rounded-full font-bold hover:bg-red-500 hover:text-white transition">
-              Watch Video
-            </a>
-
-          </div>
 
         </div>
 
@@ -556,7 +544,9 @@
         <div class="border border-black/10 rounded-[30px] p-10 hover:border-red-500 transition">
 
           <div class="w-16 h-16 rounded-2xl bg-red-500 text-white flex items-center justify-center mb-8">
+
             <i data-lucide="zap" class="w-7 h-7"></i>
+
           </div>
 
           <h3 class="heading text-4xl mb-6">
@@ -564,7 +554,9 @@
           </h3>
 
           <p class="text-zinc-600 leading-relaxed">
-            I craft high-impact openings designed to stop the scroll and maximize viewer retention in the first 3 seconds.
+
+            High-retention openings engineered to stop the scroll instantly.
+
           </p>
 
         </div>
@@ -573,7 +565,9 @@
         <div class="border border-black/10 rounded-[30px] p-10 hover:border-red-500 transition">
 
           <div class="w-16 h-16 rounded-2xl bg-red-500 text-white flex items-center justify-center mb-8">
+
             <i data-lucide="volume-2" class="w-7 h-7"></i>
+
           </div>
 
           <h3 class="heading text-4xl mb-6">
@@ -581,7 +575,9 @@
           </h3>
 
           <p class="text-zinc-600 leading-relaxed">
-            Dynamic sound effects, cinematic audio layering, and music synchronization that elevate every edit.
+
+            Cinematic sound layering, impact effects, and music synchronization.
+
           </p>
 
         </div>
@@ -590,7 +586,9 @@
         <div class="border border-black/10 rounded-[30px] p-10 hover:border-red-500 transition">
 
           <div class="w-16 h-16 rounded-2xl bg-red-500 text-white flex items-center justify-center mb-8">
+
             <i data-lucide="film" class="w-7 h-7"></i>
+
           </div>
 
           <h3 class="heading text-4xl mb-6">
@@ -598,7 +596,9 @@
           </h3>
 
           <p class="text-zinc-600 leading-relaxed">
-            Every cut is designed to maintain pacing, emotion, and audience attention from beginning to end.
+
+            Story-driven pacing designed to maximize engagement and emotion.
+
           </p>
 
         </div>
@@ -621,32 +621,42 @@
       </p>
 
       <h2 class="heading text-5xl md:text-8xl leading-none mb-10">
+
         LET'S CREATE <br>
+
         SOMETHING <span class="red-gradient">VIRAL</span>
+
       </h2>
 
       <p class="max-w-2xl mx-auto text-gray-400 text-lg leading-relaxed mb-14">
-        Looking for a premium editor who understands retention, pacing,
-        and storytelling? Let's build content that performs.
+
+        Looking for a premium editor who understands retention,
+        storytelling, and cinematic pacing?
+
       </p>
 
       <div class="flex flex-col items-center gap-6 mb-14">
 
-        <a href="mailto:afairul99@gmail.com"
+        <a href="mailto:your@email.com"
           class="text-2xl md:text-4xl font-bold hover:text-red-500 transition">
-          afairul99@gmail.com
+
+          your@email.com
+
         </a>
 
-        <a href="tel:0128376159"
+        <a href="tel:+60123456789"
           class="text-gray-400 text-lg hover:text-white transition">
-          +60 12-837 6159
+
+          +60 12-345 6789
+
         </a>
 
       </div>
 
+      <!-- SOCIAL -->
       <div class="flex justify-center gap-5">
 
-        <a href="https://instagram.com/syfq.fee"
+        <a href="https://instagram.com/"
           target="_blank"
           class="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center hover:bg-red-500 hover:border-red-500 transition">
 
@@ -654,8 +664,7 @@
 
         </a>
 
-        <a href="https://www.behance.net/gallery/206585543/Activity-Timeline-Editting"
-          target="_blank"
+        <a href="#"
           class="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center hover:bg-red-500 hover:border-red-500 transition">
 
           <i data-lucide="external-link" class="w-6 h-6"></i>
@@ -674,11 +683,15 @@
     <div class="container-custom flex flex-col md:flex-row items-center justify-between gap-4">
 
       <p class="text-gray-500 text-sm">
+
         © 2026 SYFQFEE. All rights reserved.
+
       </p>
 
       <p class="text-gray-600 text-sm">
+
         Designed for creators who want results.
+
       </p>
 
     </div>
