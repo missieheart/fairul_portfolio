@@ -3,313 +3,312 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fairul Shafiq | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    <title>Fairul Shafiq | Professional Editor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --header-bg: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            --text-dark: #1a1a1a;
-            --text-gray: #666;
-            --accent-blue: #3182ce;
-            --bg-light: #f7fafc;
+            --bg-deep: #050b1a;
+            --accent-glow: #00d2ff;
+            --card-dark: rgba(15, 22, 42, 0.9);
+            --text-white: #f8fafc;
+            --text-dim: #94a3b8;
+            --gold: #d4af37;
         }
 
-        * { box-sizing: border-box; transition: all 0.2s ease-in-out; }
+        * { box-sizing: border-box; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
 
         body {
             margin: 0;
-            background-color: var(--bg-light);
+            background-color: var(--bg-deep);
+            /* Glowing Mesh Background Effect */
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(0, 210, 255, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(147, 51, 234, 0.1) 0px, transparent 50%),
+                radial-gradient(at 50% 100%, rgba(212, 175, 55, 0.05) 0px, transparent 50%);
+            background-attachment: fixed;
             font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
+            color: var(--text-white);
+            line-height: 1.6;
         }
 
-        /* --- TOP HEADER --- */
+        /* --- GLOWING HEADER --- */
         .hero {
-            background: var(--header-bg);
-            color: white;
-            padding: 80px 20px 120px 20px;
+            padding: 100px 20px;
             text-align: center;
             position: relative;
         }
 
-        .hero-nav {
-            position: absolute;
-            top: 20px;
-            right: 5%;
-            display: flex;
-            gap: 15px;
+        .profile-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 30px;
         }
-
-        .hero-nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 0.8rem;
-            border: 1px solid rgba(255,255,255,0.3);
-            padding: 8px 16px;
-            border-radius: 20px;
-            background: rgba(255,255,255,0.1);
-        }
-
-        .hero-nav a:hover { background: white; color: var(--accent-blue); }
 
         .profile-img {
-            width: 120px;
-            height: 120px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
-            border: 4px solid white;
+            border: 3px solid rgba(255,255,255,0.1);
             object-fit: cover;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 2;
         }
 
-        .hero h1 { font-size: 2.5rem; margin: 0; font-weight: 700; }
-        .hero p { font-size: 1.1rem; opacity: 0.9; margin: 10px 0; }
-        .hero .email { font-size: 0.9rem; opacity: 0.7; text-decoration: none; color: white; }
+        .profile-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -10px; left: -10px; right: -10px; bottom: -10px;
+            background: linear-gradient(45deg, var(--accent-glow), #9333ea, var(--gold));
+            border-radius: 50%;
+            filter: blur(15px);
+            opacity: 0.6;
+            animation: rotate 10s linear infinite;
+        }
 
-        /* --- CONTENT WRAPPER --- */
+        @keyframes rotate { 100% { filter: hue-rotate(360deg); } }
+
+        h1 { font-size: 3rem; margin: 0; font-weight: 700; letter-spacing: -1px; }
+        .tagline { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--text-dim); margin: 15px 0; font-style: italic; }
+
+        /* --- CONTENT CONTAINER (EDITORIAL STYLE) --- */
         .content-container {
             max-width: 1100px;
-            margin: -60px auto 100px auto;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 30px rgba(0,0,0,0.05);
+            margin: 0 auto 100px auto;
+            background: var(--card-dark);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             overflow: hidden;
-            position: relative;
-            z-index: 10;
         }
 
-        /* --- TABS & SEARCH --- */
+        /* --- TABS & HOVERS --- */
         .tab-bar {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding: 0 30px;
-            border-bottom: 1px solid #eee;
-            flex-wrap: wrap;
+            padding: 0 40px;
+            background: rgba(255,255,255,0.02);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        .tabs { display: flex; gap: 30px; }
+        .tabs { display: flex; gap: 40px; }
         .tab {
-            padding: 25px 0;
+            padding: 30px 0;
             font-weight: 600;
-            font-size: 0.9rem;
-            color: var(--text-gray);
+            color: var(--text-dim);
             text-decoration: none;
             position: relative;
-            cursor: pointer;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .tab.active { color: var(--text-dark); }
+        .tab:hover { color: var(--text-white); }
+        .tab.active { color: var(--accent-glow); }
         .tab.active::after {
             content: '';
             position: absolute;
-            bottom: -1px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--accent-blue);
+            bottom: -1px; left: 0; width: 100%; height: 3px;
+            background: var(--accent-glow);
+            box-shadow: 0 0 15px var(--accent-glow);
         }
 
-        .search-container {
-            display: flex;
-            align-items: center;
-            background: #f1f3f5;
-            padding: 8px 15px;
-            border-radius: 20px;
-            width: 250px;
-        }
-
-        .search-container input {
-            border: none;
-            background: transparent;
-            outline: none;
-            margin-left: 10px;
-            font-size: 0.85rem;
-            width: 100%;
-        }
-
-        /* --- VIDEO GRID --- */
+        /* --- ENHANCED VIDEO CARDS --- */
         .video-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            padding: 40px;
+            gap: 50px;
+            padding: 50px;
         }
 
-        .video-card { text-decoration: none; color: inherit; }
-
-        .thumbnail {
-            width: 100%;
-            aspect-ratio: 16/9;
-            border-radius: 8px;
-            object-fit: cover;
-            margin-bottom: 15px;
-            background: #eee;
+        .video-card {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            border-radius: 12px;
         }
 
-        .video-card:hover .thumbnail { transform: scale(1.02); }
+        .thumb-wrap {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .thumb-wrap img { width: 100%; aspect-ratio: 16/9; object-fit: cover; filter: brightness(0.8); }
+
+        /* Hover Effect: The "Glow Lift" */
+        .video-card:hover { transform: translateY(-10px); }
+        .video-card:hover .thumb-wrap { box-shadow: 0 0 30px rgba(0, 210, 255, 0.3); }
+        .video-card:hover img { filter: brightness(1.1) scale(1.05); }
 
         .video-title {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 700;
             line-height: 1.3;
-            margin: 0 0 10px 0;
-            color: var(--text-dark);
+            margin: 0 0 12px 0;
         }
+        .video-card:hover .video-title { color: var(--accent-glow); text-shadow: 0 0 10px rgba(0,210,255,0.4); }
 
-        .video-card:hover .video-title { color: var(--accent-blue); }
+        .meta { display: flex; gap: 20px; font-size: 0.8rem; color: var(--text-dim); }
+        .meta i { color: var(--accent-glow); }
 
-        .meta {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            color: var(--text-gray);
-            font-size: 0.8rem;
-        }
-
-        .meta i { font-size: 0.9rem; }
-
-        /* --- PRICING & CONTACT --- */
-        .footer-info {
-            background: #fff;
-            padding: 60px 40px;
-            border-top: 8px solid var(--bg-light);
+        /* --- PRICING SECTION --- */
+        .pricing-section {
+            padding: 80px 50px;
+            background: rgba(0,0,0,0.2);
             text-align: center;
         }
 
-        .pricing-list {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin: 30px 0;
-        }
-
-        .price-chip {
-            padding: 10px 20px;
-            border: 1px solid #eee;
-            border-radius: 5px;
-            font-weight: 600;
-        }
-
-        .price-chip.gold { border-color: #d4af37; background: #fffcf0; }
-
-        .contact-footer {
-            display: flex;
-            justify-content: center;
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
-            margin-top: 20px;
+            margin-top: 40px;
         }
 
-        .contact-footer a {
-            color: var(--text-gray);
+        .price-item {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 30px 20px;
+            border-radius: 12px;
+        }
+
+        .price-item:hover { 
+            background: rgba(0, 210, 255, 0.05);
+            border-color: var(--accent-glow);
+            transform: scale(1.05);
+        }
+
+        .price-item.featured { 
+            border: 1px solid var(--gold); 
+            background: rgba(212, 175, 55, 0.05); 
+            position: relative;
+        }
+        .featured::before {
+            content: 'BEST DEAL';
+            position: absolute;
+            top: -12px; left: 50%; transform: translateX(-50%);
+            background: var(--gold); color: black;
+            font-size: 0.6rem; font-weight: 900; padding: 4px 10px; border-radius: 4px;
+        }
+
+        /* --- CLICKABLE CONTACTS --- */
+        .contact-bar {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 40px;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .contact-btn {
+            color: var(--text-dim);
             font-size: 1.5rem;
+            text-decoration: none;
         }
 
-        .contact-footer a:hover { color: var(--accent-blue); }
+        .contact-btn:hover { color: var(--text-white); transform: scale(1.3); filter: drop-shadow(0 0 10px var(--accent-glow)); }
 
-        @media (max-width: 768px) {
+        @media (max-width: 850px) {
             .video-grid { grid-template-columns: 1fr; }
-            .hero-nav { position: static; justify-content: center; margin-top: 20px; }
-            .tab-bar { padding: 10px 20px; }
-            .search-container { width: 100%; margin-top: 10px; }
+            .tabs { gap: 20px; }
+            h1 { font-size: 2.2rem; }
         }
     </style>
 </head>
 <body>
 
     <header class="hero">
-        <div class="hero-nav">
-            <a href="https://wa.me/60128376159">Contact Me</a>
-            <a href="https://www.behance.net/gallery/206585543/Activity-Timeline-Editting">Timeline</a>
+        <div class="profile-wrapper">
+            <img src="your-photo.jpg" class="profile-img" onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=Fairul'">
         </div>
-
-        <img src="your-photo.jpg" alt="Muhammad Fairul Shafiq" class="profile-img" onerror="this.src='https://via.placeholder.com/120'">
         <h1>Muhammad Fairul Shafiq</h1>
-        <p>Video Editor. Cinematic Storyteller. Content Expert.</p>
-        <a href="mailto:afairul99@gmail.com" class="email">afairul99@gmail.com</a>
+        <p class="tagline">Crafting viral narratives for the world's top creators.</p>
+        
+        <div style="margin-top: 25px;">
+            <a href="mailto:afairul99@gmail.com" style="color: var(--accent-glow); text-decoration: none; font-weight: 600; border-bottom: 1px solid;">afairul99@gmail.com</a>
+        </div>
     </header>
 
     <div class="content-container">
-        <!-- Tab Navigation -->
+        <!-- Editorial Navigation -->
         <div class="tab-bar">
             <div class="tabs">
-                <a class="tab active">Work</a>
-                <a class="tab" href="#pricing">Pricing</a>
-                <a class="tab">Resume</a>
+                <a href="#work" class="tab active">Featured Work</a>
+                <a href="#pricing" class="tab">Service Rates</a>
+                <a href="https://www.behance.net/gallery/206585543/Activity-Timeline-Editting" class="tab" target="_blank">Behance</a>
             </div>
-            <div class="search-container">
-                <i class="fa fa-search" style="color:#aaa"></i>
-                <input type="text" placeholder="Search videos...">
+            <div class="tabs" style="display: flex; align-items: center;">
+                <a href="tel:0128376159" style="color: var(--accent-glow); font-size: 0.8rem; text-decoration: none; font-weight: 700;">HIRE ME</a>
             </div>
         </div>
 
-        <!-- Video Grid -->
-        <div class="video-grid">
+        <!-- Video Portfolio Grid -->
+        <div id="work" class="video-grid">
             
-            <!-- Video 1: Noreen -->
             <a href="https://youtube.com/shorts/7oeKaDSfB1A" class="video-card" target="_blank">
-                <img src="noreen.png" class="thumbnail">
-                <h3 class="video-title">Social Media Influence: A Cinematic Short for Noreen Iman</h3>
+                <div class="thumb-wrap"><img src="noreen.png"></div>
+                <h3 class="video-title">The Art of Retention: Cinematic Storytelling with Noreen Iman</h3>
                 <div class="meta">
-                    <span><i class="far fa-calendar"></i> June 2024</span>
-                    <span><i class="fas fa-globe"></i> YouTube Short</span>
+                    <span><i class="fas fa-play-circle"></i> Short Form</span>
+                    <span><i class="far fa-clock"></i> 2024</span>
                 </div>
             </a>
 
-            <!-- Video 2: Isa 1 -->
             <a href="https://youtube.com/shorts/6FFYQN3xC0k" class="video-card" target="_blank">
-                <img src="isa.jpeg" class="thumbnail">
-                <h3 class="video-title">High-Energy Entertainment Production with Isa ISARB</h3>
+                <div class="thumb-wrap"><img src="isa.jpeg"></div>
+                <h3 class="video-title">High-Octane Entertainment: Action-Packed Edit for Isa ISARB</h3>
                 <div class="meta">
-                    <span><i class="far fa-calendar"></i> May 2024</span>
-                    <span><i class="fas fa-globe"></i> Collaborative Work</span>
+                    <span><i class="fas fa-bolt"></i> High Retention</span>
+                    <span><i class="far fa-clock"></i> 2024</span>
                 </div>
             </a>
 
-            <!-- Video 3: Liana 1 -->
             <a href="https://youtube.com/shorts/7it8e3b80kk" class="video-card" target="_blank">
-                <img src="liana.jpeg" class="thumbnail">
-                <h3 class="video-title">Visual Storytelling and Color Grading Series: Liana Vol. 1</h3>
+                <div class="thumb-wrap"><img src="liana.jpeg"></div>
+                <h3 class="video-title">Minimalist Aesthetic & Color Precision Series: Liana Vol. 1</h3>
                 <div class="meta">
-                    <span><i class="far fa-calendar"></i> April 2024</span>
-                    <span><i class="fas fa-globe"></i> Vertical Content</span>
+                    <span><i class="fas fa-palette"></i> Color Grade</span>
+                    <span><i class="far fa-clock"></i> 2024</span>
                 </div>
             </a>
 
-            <!-- Video 4: SK Penjahat -->
             <a href="https://youtube.com/shorts/WclkfoAsEDk" class="video-card" target="_blank">
-                <img src="sk_penjahat.jpeg" class="thumbnail">
-                <h3 class="video-title">Dynamic Motion Graphics Showcase for SK_penjahat</h3>
+                <div class="thumb-wrap"><img src="sk_penjahat.jpeg"></div>
+                <h3 class="video-title">Dynamic Sound Design & VFX Integration for SK_penjahat</h3>
                 <div class="meta">
-                    <span><i class="far fa-calendar"></i> March 2024</span>
-                    <span><i class="fas fa-globe"></i> Featured Project</span>
+                    <span><i class="fas fa-volume-up"></i> Sound FX</span>
+                    <span><i class="far fa-clock"></i> 2024</span>
                 </div>
             </a>
 
         </div>
 
-        <!-- Pricing Section (Styled like an Article List) -->
-        <div id="pricing" class="footer-info">
-            <h2 style="font-family: 'Merriweather', serif;">Editing Packages</h2>
-            <p style="color: var(--text-gray);">Flexible rates for creators looking to scale their content quality.</p>
+        <!-- Pricing (Editorial List Style) -->
+        <div id="pricing" class="pricing-section">
+            <h2 style="font-size: 2rem; margin-bottom: 10px;">Production Packages</h2>
+            <p style="color: var(--text-dim);">Premium editing services optimized for YouTube, Reels, and TikTok.</p>
             
-            <div class="pricing-list">
-                <div class="price-chip">1 Video - RM60</div>
-                <div class="price-chip">5 Videos - RM250</div>
-                <div class="price-chip">10 Videos - RM450</div>
-                <div class="price-chip gold">20 Videos - RM700 (Best Deal)</div>
+            <div class="pricing-grid">
+                <div class="price-item">1 Video<br><b style="color:var(--accent-glow)">RM60</b></div>
+                <div class="price-item">5 Videos<br><b style="color:var(--accent-glow)">RM250</b></div>
+                <div class="price-item">10 Videos<br><b style="color:var(--accent-glow)">RM450</b></div>
+                <div class="price-item">15 Videos<br><b style="color:var(--accent-glow)">RM600</b></div>
+                <div class="price-item featured">20 Videos<br><b style="color:var(--gold)">RM700</b></div>
             </div>
             
-            <p style="font-size: 0.8rem; color: #999;">*Disclaimer: Valid for full payment only.</p>
+            <p style="font-size: 0.7rem; color: #555; margin-top: 40px; letter-spacing: 1px;">FULL PAYMENT REQUIRED UPFRONT FOR PACKAGES</p>
+        </div>
 
-            <div class="contact-footer">
-                <a href="https://instagram.com/syfq.fee"><i class="fab fa-instagram"></i></a>
-                <a href="https://threads.net/@feedstudi0"><i class="fa-brands fa-threads"></i></a>
-                <a href="https://wa.me/60128376159"><i class="fab fa-whatsapp"></i></a>
-            </div>
+        <!-- Sticky Footer Contacts -->
+        <div class="contact-bar">
+            <a href="https://wa.me/60128376159" class="contact-btn"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://instagram.com/syfq.fee" class="contact-btn"><i class="fab fa-instagram"></i></a>
+            <a href="mailto:afairul99@gmail.com" class="contact-btn"><i class="far fa-envelope"></i></a>
+            <a href="tel:0128376159" class="contact-btn"><i class="fas fa-phone"></i></a>
         </div>
     </div>
 
